@@ -113,7 +113,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &209821937
+--- !u!1001 &32091565
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -243,8 +243,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 576fc1335c060314b87aa464d65b9f58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panel1: {fileID: 1293335952}
-  widget1: {fileID: 1166502223}
 --- !u!224 &597422873
 RectTransform:
   m_ObjectHideFlags: 0
@@ -320,16 +318,11 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!1 &1166502223 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1150872467082746, guid: fa8923b31312e964b9ec38bf459aaf86,
-    type: 2}
-  m_PrefabInternal: {fileID: 209821937}
 --- !u!224 &1166502224 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 224859270516685198, guid: fa8923b31312e964b9ec38bf459aaf86,
     type: 2}
-  m_PrefabInternal: {fileID: 209821937}
+  m_PrefabInternal: {fileID: 32091565}
 --- !u!1 &1216487911
 GameObject:
   m_ObjectHideFlags: 0
@@ -425,11 +418,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &1293335952 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1153029880022294, guid: 41b4888104a638a4c83451a3a1abcff7,
-    type: 2}
-  m_PrefabInternal: {fileID: 1357767293}
 --- !u!224 &1293335956 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 224300182243466818, guid: 41b4888104a638a4c83451a3a1abcff7,

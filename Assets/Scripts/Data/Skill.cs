@@ -31,7 +31,11 @@ public class Skill
     // 闪避权值
     public int DodgeWeight { get; set; }
     // 需要消耗的行动球
-    public List<ActionBall> CostBalls { get; set; }
+    public Dictionary<ActionBall, int> CostBalls { get; set; }
+    // 需要消耗的生命值
+    public int CostHp { get; set; }
+    // 需要消耗的内力值
+    public int CostMp { get; set; }
 
     public Skill()
     {
@@ -47,7 +51,7 @@ public class Skill
         DefenceWeight = 1;
         HitWeight = 1;
         DodgeWeight = 1;
-        CostBalls = new List<ActionBall>();
+        CostBalls = new Dictionary<ActionBall, int>();
     }
 
 }

@@ -45,7 +45,7 @@ public class BattleManager {
     // 战斗回合数
     private int Round { get; set; }
     // 一个回合选择的操作序列
-    private string CommandSuequence { get; set; }
+    private List<Skill> CommandSuequence { get; set; }
 
     private Battle_States CurrentBattleState
     {
@@ -96,27 +96,118 @@ public class BattleManager {
             EquipedSpecialSkills = new List<Skill>(),
             EquipedXinfaSkill = new Skill(),
         };
-        // 行动球池子随机生成
-        for (int i = 0; i < 20; i++)
-        {
-            Player.BallPool.Add(new ActionBall((ActionBallType)UnityEngine.Random.Range(1, 3)));
-        }
         // 填充技能
-        Player.EquipedBaseSKills.Add(new Skill("基础攻击", "基础攻击", 0));
-        Player.EquipedBaseSKills.Add(new Skill("基础防御", "基础防御", 0));
-        Player.EquipedBaseSKills.Add(new Skill("基础闪避", "基础闪避", 0));
-        Player.EquipedSpecialSkills.Add(new Skill("太极拳法", "太极拳法", 1));
-        Player.EquipedSpecialSkills.Add(new Skill("凌波微步", "凌波微步", 2));
-        Player.EquipedSpecialSkills.Add(new Skill("沾衣十八跌", "沾衣十八跌", 1));
-        Player.EquipedXinfaSkill = new Skill("吸星大法", "吸星大法", 3);
-
+        Player.EquipedBaseSKills.Add(new Skill
+        {
+            Key = "基础攻击",
+            Name = "基础攻击",
+            CD = 0,
+            DamageWeight = 2,
+            DefenceWeight = 1,
+            HitWeight = 1,
+            DodgeWeight = 1,
+            CostBalls = new Dictionary<ActionBall, int>()
+            {
+                {new ActionBall(ActionBallType.Power),1 },
+            }
+        });
+        Player.EquipedBaseSKills.Add(new Skill
+        {
+            Key = "基础防御",
+            Name = "基础防御",
+            CD = 0,
+            DamageWeight = 1,
+            DefenceWeight = 2,
+            HitWeight = 1,
+            DodgeWeight = 1,
+            CostBalls = new Dictionary<ActionBall, int>()
+            {
+                {new ActionBall(ActionBallType.Block),1 },
+            }
+        });
+        Player.EquipedBaseSKills.Add(new Skill
+        {
+            Key = "基础闪避",
+            Name = "基础闪避",
+            CD = 0,
+            DamageWeight = 1,
+            DefenceWeight = 1,
+            HitWeight = 1,
+            DodgeWeight = 2,
+            CostBalls = new Dictionary<ActionBall, int>()
+            {
+                {new ActionBall(ActionBallType.Quick),1 },
+            }
+        });
+        Player.EquipedSpecialSkills.Add(new Skill
+        {
+            Key = "太极拳法",
+            Name = "太极拳法",
+            CD = 1,
+            DamageWeight = 5,
+            DefenceWeight = 1,
+            HitWeight = 1,
+            DodgeWeight = 1,
+            CostBalls = new Dictionary<ActionBall, int>()
+            {
+                {new ActionBall(ActionBallType.Quick),2 },
+                {new ActionBall(ActionBallType.Power),1 },
+            }
+        });
+        Player.EquipedSpecialSkills.Add(new Skill
+        {
+            Key = "凌波微步",
+            Name = "凌波微步",
+            CD = 2,
+            DamageWeight = 1,
+            DefenceWeight = 1,
+            HitWeight = 1,
+            DodgeWeight = 5,
+            CostBalls = new Dictionary<ActionBall, int>()
+            {
+                {new ActionBall(ActionBallType.Quick),3 },
+            }
+        });
+        Player.EquipedSpecialSkills.Add(new Skill
+        {
+            Key = "沾衣十八跌",
+            Name = "沾衣十八跌",
+            CD = 2,
+            DamageWeight = 1,
+            DefenceWeight = 5,
+            HitWeight = 1,
+            DodgeWeight = 5,
+            CostBalls = new Dictionary<ActionBall, int>()
+            {
+                {new ActionBall(ActionBallType.Quick),1 },
+                {new ActionBall(ActionBallType.Block),1 },
+                {new ActionBall(ActionBallType.Power),1 },
+            }
+        });
+        Player.EquipedXinfaSkill = new Skill
+        {
+            Key = "吸星大法",
+            Name = "吸星大法",
+            CD = 2,
+            DamageWeight = 1,
+            DefenceWeight = 5,
+            HitWeight = 1,
+            DodgeWeight = 5,
+            CostBalls = new Dictionary<ActionBall, int>()
+            {
+                {new ActionBall(ActionBallType.Quick),1 },
+                {new ActionBall(ActionBallType.Block),1 },
+                {new ActionBall(ActionBallType.Power),1 },
+            }
+        };
+        Player.GenerateBallPool();
         Enemy = new Role
         {
             RoleName = "半瓶神仙醋",
             HP = 100,
             MaxHp = 100,
-            MP = 5,
-            MaxMp = 5,
+            MP = 3,
+            MaxMp = 3,
             Attack = 1,
             Defence = 1,
             Dodge = 1,
@@ -125,10 +216,6 @@ public class BattleManager {
             EquipedSpecialSkills = new List<Skill>(),
             EquipedXinfaSkill = new Skill(),
         };
-        for (int i = 0; i < 20; i++)
-        {
-            Enemy.BallPool.Add(new ActionBall((ActionBallType)UnityEngine.Random.Range(1, 3)));
-        }
         // 填充技能
         Enemy.EquipedBaseSKills.Add(new Skill("基础攻击", "基础攻击", 0));
         Enemy.EquipedBaseSKills.Add(new Skill("基础防御", "基础防御", 0));
@@ -137,5 +224,7 @@ public class BattleManager {
         Enemy.EquipedSpecialSkills.Add(new Skill("凌波微步", "凌波微步", 2));
         Enemy.EquipedSpecialSkills.Add(new Skill("沾衣十八跌", "沾衣十八跌", 1));
         Enemy.EquipedXinfaSkill = new Skill("吸星大法", "吸星大法", 3);
+        Enemy.GenerateBallPool();
+
     }
 }

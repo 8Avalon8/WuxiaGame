@@ -71,6 +71,11 @@ public class BattleManager {
         InitBattle();
     }
 
+    public void AddCommand(Skill skill)
+    {
+        CommandSuequence.Add(skill);
+    }
+
     /// <summary>
     /// 初始化战斗
     /// </summary>

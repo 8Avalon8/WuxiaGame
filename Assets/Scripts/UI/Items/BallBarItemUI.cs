@@ -14,7 +14,10 @@ public class BallBarItemUI : MonoBehaviour {
     /// </summary>
     public void Clear()
     {
-
+        foreach (var item in m_ActionBallItemList)
+        {
+            item.SetPreUse(false);
+        }
     }
 
     public void Add(ActionBallItemUI item)

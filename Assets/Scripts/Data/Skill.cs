@@ -16,6 +16,18 @@ public class Skill
      *
      */
 
+    public struct DamageRatioStruct
+    {
+        public float power_ratio;
+        public float quick_ratio;
+        public float solid_ratio;
+        DamageRatioStruct(float power,float quick,float solid)
+        {
+            power_ratio = 0;
+            quick_ratio = 0;
+            solid_ratio = 0;
+        }
+    }
     // 标识符
     public string Key { get; set; }
     // 显示名
@@ -32,6 +44,8 @@ public class Skill
     public int DodgeWeight { get; set; }
     // 需要消耗的行动球
     public Dictionary<ActionBall, int> CostBalls { get; set; }
+    // 攻击对应的属性权值
+    public DamageRatioStruct DamageRatio { get; set; }
     // 需要消耗的生命值
     public int CostHp { get; set; }
     // 需要消耗的内力值

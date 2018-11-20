@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,9 +10,10 @@ public class Role {
     public int MaxMp { get; set; }
     public int HP { get; set; }
     public int MP { get; set; }
-    public int Attack { get; set; }
-    public int Defence { get; set; }
-    public int Dodge { get; set; }
+    public int Power { get; set; }
+    public int Solid { get; set; }
+    public int Quick { get; set; }
+
     public List<ActionBall> BallPool
     {
         get
@@ -54,7 +56,50 @@ public class Role {
             tempPool.Add(new ActionBall(ActionBallType.Quick));
         }
         _ballPool = Tools.RandomSortList(tempPool);
-        
+    }
+
+    public int GetAttack(Skill skill)
+    {
+        float pow_ratio = skill.DamageRatio.power_ratio;
+        float quick_ratio = skill.DamageRatio.quick_ratio;
+        float solid_ratio = skill.DamageRatio.solid_ratio;
+        float attack = Power * pow_ratio + Quick * quick_ratio + Solid * solid_ratio;
+        return Convert.ToInt32(Math.Ceiling(attack));
+    }
+
+    public int GetDefence()
+    {
+        int defence = 0;
+        //defence += Solid * 1;  // 暂时所有人没有防御的概念
+        return 0;
+    }
+
+    /// <summary>
+    /// 获取闪避权重
+    /// </summary>
+    /// <returns></returns>
+    public int GetShanbiWeight()
+    {
+        int shanbi = 0;
+        // 闪避与Quick相关
+        shanbi += Quick * 1;
+        // 自身闪避还会与当前buff等状态相关，后续添加
+        return shanbi;
+    }
+
+    public int GetMingzhongWeight()
+    {
+        int mingzhong = 0;
+        // 暂时的
+        mingzhong += Quick * 1;
+        return mingzhong;
+    }
+
+    public int GetCriticalWeight()
+    {
+        int critical = 0;
+        critical += Power * 1;
+        return critical;
     }
 
 }

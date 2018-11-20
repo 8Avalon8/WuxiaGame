@@ -71,9 +71,40 @@ public class BattleManager {
         InitBattle();
     }
 
+    public void StartRound()
+    {
+        CurrentBattleState = Battle_States.ROUND_START;
+        CommandSuequence = new List<Skill>();
+
+    }
+
+    public IEnumerable<SkillResult> StartComputing()
+    {
+        foreach (var item in CommandSuequence)
+        {
+            Debug.Log(item.Name);
+            ExcuteCommandLogic commandLogic = new ExcuteCommandLogic(item,Player,Enemy);
+            yield return commandLogic.Rst;
+            //SetRoleStatus(commandLogic.Rst);
+        }
+    }
+
+    private void SetRoleStatus(SkillResult rst)
+    {
+        Player.HP += rst.Source.Hp;
+        Player.MP += rst.Source.Mp;
+        Enemy.HP += rst.Target.Hp;
+        Enemy.MP += rst.Target.Mp;
+    }
+
     public void AddCommand(Skill skill)
     {
         CommandSuequence.Add(skill);
+    }
+
+    public void ClearCommand()
+    {
+        CommandSuequence.Clear();
     }
 
     /// <summary>
@@ -93,9 +124,9 @@ public class BattleManager {
             MaxHp = 100,
             MP = 5,
             MaxMp = 5,
-            Attack = 1,
-            Defence = 1,
-            Dodge = 1,
+            Power = 1,
+            Solid = 1,
+            Quick = 1,
             BallPool = new List<ActionBall>(),
             EquipedBaseSKills = new List<Skill>(),
             EquipedSpecialSkills = new List<Skill>(),
@@ -114,7 +145,13 @@ public class BattleManager {
             CostBalls = new Dictionary<ActionBall, int>()
             {
                 {new ActionBall(ActionBallType.Power),1 },
-            }
+            },
+            DamageRatio = new Skill.DamageRatioStruct
+            {
+                power_ratio = 1,
+                solid_ratio = 0,
+                quick_ratio = 1,
+            },
         });
         Player.EquipedBaseSKills.Add(new Skill
         {
@@ -157,7 +194,13 @@ public class BattleManager {
             {
                 {new ActionBall(ActionBallType.Quick),2 },
                 {new ActionBall(ActionBallType.Power),1 },
-            }
+            },
+            DamageRatio = new Skill.DamageRatioStruct
+            {
+                power_ratio = 2,
+                solid_ratio = 0,
+                quick_ratio = 1,
+            },
         });
         Player.EquipedSpecialSkills.Add(new Skill
         {
@@ -209,13 +252,13 @@ public class BattleManager {
         Enemy = new Role
         {
             RoleName = "半瓶神仙醋",
-            HP = 100,
-            MaxHp = 100,
+            HP = 20,
+            MaxHp = 20,
             MP = 3,
             MaxMp = 3,
-            Attack = 1,
-            Defence = 1,
-            Dodge = 1,
+            Power = 1,
+            Solid = 1,
+            Quick = 1,
             BallPool = new List<ActionBall>(),
             EquipedBaseSKills = new List<Skill>(),
             EquipedSpecialSkills = new List<Skill>(),
@@ -232,4 +275,45 @@ public class BattleManager {
         Enemy.GenerateBallPool();
 
     }
+
+    #region 战斗逻辑
+    /** 战斗逻辑应该有ExcuteCommandLogic
+     * DoComputeAttack
+     * |
+     * GetShanbiProbability
+     * |
+     * DoComputePureAttack
+     * |
+     * AdjustDefence
+     * |
+     * GetCriticalProperty
+     * |
+     * SkillEffectModel
+     * |
+     * return Attack Result
+     **/
+
+
+
+
+    /// <summary>
+    /// 是否战斗结束
+    /// </summary>
+    /// <returns></returns>
+    public bool IsBattleFinish()
+    {
+        if (Player.HP > 0 && Enemy.HP > 0)
+            return true;
+        return false;
+    }
+
+    public bool IsRoleNeedAI(Role role)
+    {
+        return false;
+    }
+
+
+
+
+    #endregion
 }

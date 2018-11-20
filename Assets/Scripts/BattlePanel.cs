@@ -24,11 +24,13 @@ public class BattlePanel : MonoBehaviour
     public Button[] m_BaseSkillBtnArray;
     public Button[] m_SpecialSkillBtnArray;
     public Button m_XinfaBtn;
-    public Button m_StartActionButton;
+    public Button m_StartActionBtn;
+    public Button m_CancelActionsBtn;
 
     public HpBarItemUI m_LifeBar;
     public HpBarItemUI m_EnemyLifeBar;
     public BallBarItemUI m_BallBarItemUI;
+    public BallBarItemUI m_EnemyBallBarItemUI;
 
 
 
@@ -47,21 +49,32 @@ public class BattlePanel : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        // 绑定Button
+        m_StartActionBtn.onClick.AddListener(OnStartAction);
+        m_CancelActionsBtn.onClick.AddListener(OnCancelAction);
+
         BattleManager.Instance.OnTestStartBattle();
         m_Player = BattleManager.Instance.Player;
         m_Enemy = BattleManager.Instance.Enemy;
+        m_LifeBar.DoChangeValue(2);
+        m_EnemyLifeBar.DoChangeValue(2);
+        // 技能按钮
+        BindSkillButtons();
+        // 填充内力槽的球
+        StartCoroutine(ShowBallsInBar(m_EnergyBarTrs, EnergyBallObj, m_Player.MP));
+        StartCoroutine(ShowBallsInBar(m_EnemyEnergyBarTrs, EnergyBallObj, m_Enemy.MP));
+        //StartCoroutine(ShowBallsInActionBar(m_EnemyBallBar, m_Player.BallPool, 9));
+        // 填充行动槽的球
+        StartCoroutine(ShowBallsInActionBar(m_BallBarItemUI, m_BallBar, m_Player.BallPool, 9));
+        StartCoroutine(ShowBallsInActionBar(m_EnemyBallBarItemUI, m_EnemyBallBar, m_Enemy.BallPool, 9));
+
         Refresh();
+        BattleManager.Instance.StartRound();
     }
 
     void Refresh()
     {
-        m_LifeBar.DoChangeValue(2);
-        m_EnemyLifeBar.DoChangeValue(2);
-        BindSkillButtons();
-        StartCoroutine(ShowBallsInBar(m_EnergyBarTrs, EnergyBallObj, m_Player.MP));
-        StartCoroutine(ShowBallsInBar(m_EnemyEnergyBarTrs, EnergyBallObj, m_Enemy.MP));
-        //StartCoroutine(ShowBallsInActionBar(m_EnemyBallBar, m_Player.BallPool, 9));
-        StartCoroutine(ShowBallsInActionBar(m_BallBar, m_Enemy.BallPool, 9));
+
     }
 
 
@@ -158,6 +171,31 @@ public class BattlePanel : MonoBehaviour
 
     }
 
+    void OnStartAction()
+    {
+        foreach (var rst in BattleManager.Instance.StartComputing())
+        {
+            
+            if (rst.Target.Hp != 0)
+            {
+                m_EnemyLifeBar.DoChangeValue((m_Enemy.HP + rst.Target.Hp) * 1.0f / m_Enemy.MaxHp);
+                m_Player.HP += rst.Source.Hp;
+                m_Enemy.HP += rst.Target.Hp;
+            }
+            else
+            {
+                Debug.Log("Battle Finish");
+            }
+        }
+        BattleManager.Instance.ClearCommand();
+    }
+
+    void OnCancelAction()
+    {
+        BattleManager.Instance.ClearCommand();
+        m_BallBarItemUI.Clear();
+    }
+
     IEnumerator ShowBallsInBar(Transform balltrs, GameObject ballprefab, int count)
     {
         for (int i = 0; i < count; i++)
@@ -168,7 +206,7 @@ public class BattlePanel : MonoBehaviour
         }
     }
 
-    IEnumerator ShowBallsInActionBar(Transform balltrs, List<ActionBall> ballpool, int count)
+    IEnumerator ShowBallsInActionBar(BallBarItemUI baritem, Transform balltrs, List<ActionBall> ballpool, int count)
     {
         for (int i = 0; i < count; i++)
         {
@@ -195,8 +233,18 @@ public class BattlePanel : MonoBehaviour
             }
             ball.transform.SetParent(balltrs, false);
             // 加入m_BallBarItemUI
-            m_BallBarItemUI.Add(ball.GetComponent<ActionBallItemUI>());
+            baritem.Add(ball.GetComponent<ActionBallItemUI>());
             yield return new WaitForSeconds(0.2f);
         }
+    }
+
+    /// <summary>
+    /// 播放执行完操作后的动画和UI变化
+    /// </summary>
+    void PlayCommandAnimation()
+    {
+        // 1.播放skill对应的动画
+        // 2.对应播放对手的动画
+        // 3.关键帧对UI展示进行操作
     }
 }

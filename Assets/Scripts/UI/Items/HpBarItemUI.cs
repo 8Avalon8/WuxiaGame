@@ -16,4 +16,5 @@ public class HpBarItemUI : MonoBehaviour {
     {
         m_LifeBarImg.DOFillAmount(percent,duration);
     }
+
 }

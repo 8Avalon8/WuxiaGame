@@ -1,0 +1,3 @@
+GG20181020 
+	从JHX.MiddleWare中拷贝过来。
+	给JObject添加了GetValue函数。源码从V6.0.3.DLL 中拷贝过来，因为阿里云日志客户端代码需要。

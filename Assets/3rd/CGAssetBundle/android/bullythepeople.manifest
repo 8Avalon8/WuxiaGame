@@ -1,0 +1,44 @@
+ManifestFileVersion: 0
+CRC: 601695451
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 0ec80e5dceaa399d62f6f4344a807ac5
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 277858d7a7079367a80282cc8ada5c0d
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 20
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 82
+  Script: {instanceID: 0}
+- Class: 83
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+- Class: 212
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+Assets:
+- Assets/Prefabs/BullyThePeople.prefab
+Dependencies: []

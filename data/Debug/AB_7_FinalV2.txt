@@ -1,0 +1,2 @@
+此文件记录了 每个资源所在的AB包和所依赖的AB包。
+Assets/BuildSource/NO_SVN_HanSqurrel/resourceindex.bytes [3721933107] hsframework_resourceabindex - 

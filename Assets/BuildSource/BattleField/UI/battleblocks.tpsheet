@@ -1,0 +1,23 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# http://www.codeandweb.com/texturepacker/unity
+#
+# $TexturePacker:SmartUpdate:7113b8914b62d3deff1aaf5af9835528:efd1d0d52c8da469a71b65167aa0db1c:59673f4535f06795e52050c45eb32f1f$
+#
+:format=40000
+:texture=battleblocks.png
+:size=256x512
+
+ui-gongjifanwei-diren;1;351;79;73;0.5;0.5
+ui-gongjifanweigezi;82;351;79;73;0.5;0.5
+ui-gongjijuligezi;163;330;79;73;0.5;0.5
+ui-gongjixuanzhonggezi;1;426;95;85;0.5;0.5
+ui-hongquan;163;286;46;42;0.5;0.5
+ui-huisegezi;163;242;45;42;0.5;0.5
+ui-shijigongjigezi;1;276;79;73;0.5;0.5
+ui-xuanding1;195;459;58;52;0.5;0.5
+ui-xuanding2;195;405;58;52;0.5;0.5
+ui-yidonggezi;82;276;79;73;0.5;0.5
+ui-yidongxuanzhonggezi;98;426;95;85;0.5;0.5

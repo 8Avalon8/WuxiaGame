@@ -1,0 +1,16 @@
+此目录的内容会在GameServer、单独的MSConsoleEXE、Unity工程中同时使用。
+
+MSConsoleEXE下需要在工程中定义宏：
+HSFRAMEWORK_RUN_IN_MS_CONSOLE
+HSFRAMEWORK_WITHOUT_UNITY
+
+GameServer下需要在工程中定义宏：
+HSFRAMEWORK_RUN_IN_GAME_SERVER
+HSFRAMEWORK_RUN_IN_MS_CONSOLE
+HSFRAMEWORK_WITHOUT_UNITY
+
+Unity下面不需要定义宏。
+
+GG 20180131
+
+开始简化，目的是支持DLL形式的发布。

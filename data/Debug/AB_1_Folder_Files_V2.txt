@@ -1,0 +1,2 @@
+此文件记录了 所有自定义的AB包中的所有原始资源（不列出外部依赖）。
+Assets/BuildSource/NO_SVN_HanSqurrel/resourceindex.bytes [hsframework_resourceabindex]

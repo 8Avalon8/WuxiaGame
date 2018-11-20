@@ -1,0 +1,10 @@
+{
+    "name": "Pojo",
+    "references": [
+        "HanSquirrel.Crossplatform"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false
+}

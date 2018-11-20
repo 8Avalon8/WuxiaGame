@@ -1,0 +1,44 @@
+ManifestFileVersion: 0
+CRC: 2304015788
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: c6b5503f2b0efc71d8caf0bf542e2a0b
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 6672dc084204f48eda8ba569c6e46839
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 20
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 82
+  Script: {instanceID: 0}
+- Class: 83
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: e31da7edb145c96479a6027c6320df1b, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 212
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+Assets:
+- Assets/Prefabs/PullOutSword.prefab
+Dependencies: []

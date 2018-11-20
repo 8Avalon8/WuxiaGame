@@ -1,0 +1,5 @@
+
+GG 20181020
+	从 https://github.com/aliyun/aliyun-log-csharp-sdk 复制过来并修改。
+	如更新，请慎重。
+	

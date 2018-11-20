@@ -1,0 +1,48 @@
+
+V1.5.10
+将HSFrameWork拆开为四个工程，加上之前 Basic总共五个工程，分别在如下场景可以使用。
+HSFrameWorkUnityEditor		UnityEditor
+HSFrameWorkUnity			UnityEditor		Unity
+HSFrameWorkWinSupport								Windows
+HSFrameWorkEditor			UnityEditor				Windows
+HSFrameWorkBasic			UnityEditor		Unity	Windows
+
+V1.5.00
+支持valuebundle功能，可以定义多个子包。
+
+V1.4.00
+继续拆分工程
+
+HSBasic3.5和HSBasic4.5的代码相同，编译目标不同，可以作为DLL发布。
+
+GLib4.5 		    Phone	Unity	Windows		在任何地方都可以运行，可以发布代码或者DLL
+HSBasic3.5 		    Phone	Unity	Windows		在任何地方都可以运行，可以发布代码或者DLL
+HSBasic4.5 			Phone	Unity	Windows		在任何地方都可以运行，可以发布代码或者DLL，环境需要>net4.5
+HSFrameWork 		Phone	Unity	Windows		在任何地方都可以运行，需要发布代码。
+
+V1.3.00
+将工程拆分为4个源码目录。
+HSFrameWork 		Phone	Unity	Windows		仅仅在终端和Unity开发时运行的正式代码
+HSFrameWorkT 				Unity   Windows		客户端的测试
+HSFrameWorkS 						Windows		仅仅在服务端运行的代码
+HSFrameWorkST						Windows		完整测试
+
+V1.2.00
+比上个版本增加了基于KCPLib的完整可部署KCP协议的实现，以及实时对战平台。
+（因代码统一维护开始过于复杂，故此）从本版本开始只针对服务端的代码拆开为单独目录进行发布。
+
+完整功能需要在WINDOWS下编译。编译时需要如下选项：
+
+HSFRAMEWORK_WITHOUT_UNITY 是否在Unity下运行。因为Unity下定义宏麻烦，因此反向定义下。
+HSFRAMEWORK_RUN_IN_MS_CONSOLE 是否在Windows下运行。有些服务端代码或者三方库和Windows绑定。
+HSFRAMEWORK_NLOG 整个运行环境是否使用NLOG库
+HSFRAMEWORK_NET_ABOVE_4_5 是否在NET4.5或者以上运行 
+HSFRAMEWORK_DEV_TEST 是否是开发者测试
+HSFRAMEWORK_BASIC_REALBATTLE_PLATFORM 是否包含原始的实时对战平台，仅仅用于实时对战模块在没有正式GameServer和RoomServer的时候，提供一个可以运行对战的基本平台。
+HSFRAMEWORK_TAISAI 是否包含赌大小测试（必须通过定义HSFRAMEWORK_BASIC_REALBATTLE_PLATFORM才可以）
+
+在Untiy下可以使用的选项
+AIUNITY_CODE http://aiunity.com/products/nlog/manual/ （必须同时下载）
+HSFRAMEWORK_AIUNITY_NLOG_GG 是否把AIUnity包装为NLOG最新版接口
+HSFRAMEWORK_BASIC_REALBATTLE_PLATFORM 同上
+HSFRAMEWORK_TAISAI 同上

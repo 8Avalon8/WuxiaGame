@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 3438224922
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: hsframework_resourceabindex
+      Dependencies: {}

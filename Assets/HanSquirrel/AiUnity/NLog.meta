@@ -1,0 +1,36 @@
+fileFormatVersion: 2
+guid: 94406b5b5b39916459e1dc84556ddd44
+labels:
+- 2017
+- AI
+- API
+- AiUnity
+- C#
+- Console
+- CreateLogger
+- CustomLogger
+- Debug
+- DebugAndroid
+- DebugConsole
+- DebugRuntime
+- Debugging
+- DebugiOS
+- Editor
+- InGameLogging
+- Log
+- Logger
+- Logging
+- LoggingFramework
+- LoggingToFile
+- MobileDebug
+- MobileLogging
+- RemoteDebug
+- RemoteLogging
+- Runtime
+- Script
+folderAsset: yes
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

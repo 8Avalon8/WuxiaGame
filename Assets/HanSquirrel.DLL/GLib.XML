@@ -1,0 +1,1106 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GLib</name>
+    </assembly>
+    <members>
+        <member name="T:BlinkSyncLib.Sync">
+            <summary>
+            Folders and files synchronization
+            </summary>
+        </member>
+        <member name="M:BlinkSyncLib.Sync.#ctor">
+            <summary>
+            Initializes a new instance of Synchonizer object.
+            </summary>
+        </member>
+        <member name="M:BlinkSyncLib.Sync.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of Synchonizer object.
+            </summary>
+            <param name="sourceDirectory"></param>
+            <param name="destinationDirectory"></param>
+        </member>
+        <member name="P:BlinkSyncLib.Sync.Log">
+            <summary>
+            Set this property to log the synchronization progress by this class to the given delegate. 
+            For example, to log to the console, set this property to Console.Write.
+            </summary>
+        </member>
+        <member name="P:BlinkSyncLib.Sync.SourceDirectory">
+            <summary>
+            Get or set the source folder to synchronize
+            </summary>
+        </member>
+        <member name="P:BlinkSyncLib.Sync.DestinationDirectory">
+            <summary>
+            Get or set the target folder where all files will be synchronized
+            </summary>
+        </member>
+        <member name="P:BlinkSyncLib.Sync.Configuration">
+            <summary>
+            Get or set all synronization parameters
+            </summary>
+        </member>
+        <member name="M:BlinkSyncLib.Sync.Start">
+            <summary>
+            Performs one-way synchronization from source directory tree to destination directory tree
+            </summary>
+        </member>
+        <member name="M:BlinkSyncLib.Sync.Start(BlinkSyncLib.InputParams)">
+            <summary>
+            Performs one-way synchronization from source directory tree to destination directory tree
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="M:BlinkSyncLib.Sync.DeleteDirectory(System.IO.DirectoryInfo)">
+            <summary>
+            Robustly deletes a directory including all subdirectories and contents
+            </summary>
+            <param name="directory"></param>
+        </member>
+        <member name="M:BlinkSyncLib.Sync.GetFiles(System.IO.DirectoryInfo,BlinkSyncLib.InputParams,BlinkSyncLib.SyncResults@)">
+            <summary>
+            Gets list of files in specified directory, optionally filtered by specified input parameters
+            </summary>
+            <param name="directoryInfo"></param>
+            <param name="inputParams"></param>
+            <param name="results"></param>
+        </member>
+        <member name="M:BlinkSyncLib.Sync.GetDirectories(System.IO.DirectoryInfo,BlinkSyncLib.InputParams,BlinkSyncLib.SyncResults@)">
+            <summary>
+            Gets list of subdirectories of specified directory, optionally filtered by specified input parameters
+            </summary>
+            <param name="results"></param>
+            <param name="inputParams"></param>
+            <param name="directoryInfo"></param>
+        </member>
+        <member name="M:BlinkSyncLib.Sync.Validate(System.String,System.String,BlinkSyncLib.InputParams)">
+            <summary>
+            Validate folder and parameters
+            </summary>
+            <param name="destDir"></param>
+            <param name="parameters"></param>
+            <param name="srcDir"></param>
+        </member>
+        <member name="M:BlinkSyncLib.Sync.ProcessDirectory(System.String,System.String,BlinkSyncLib.InputParams,BlinkSyncLib.SyncResults@)">
+            <summary>
+            Recursively performs one-way synchronization from a single source to destination directory
+            </summary>
+            <param name="srcDir"></param>
+            <param name="destDir"></param>
+            <param name="inputParams"></param>
+            <param name="results"></param>
+        </member>
+        <member name="M:BlinkSyncLib.Sync.ShouldExclude(System.Text.RegularExpressions.Regex[],System.Text.RegularExpressions.Regex[],System.String)">
+            <summary>
+            For a given include and exclude list of regex's and a name to match, determines if the
+            named item should be excluded
+            </summary>
+            <param name="excludeList"></param>
+            <param name="includeList"></param>
+            <param name="name"></param>
+        </member>
+        <member name="M:BlinkSyncLib.Sync.PrintUsage">
+            <summary>
+            Prints usage      
+            </summary>
+        </member>
+        <member name="M:BlinkSyncLib.Sync.Trace(System.String,System.Object[])">
+            <summary>
+            Trace message
+            </summary>
+            <param name="message"></param>
+            <param name="args"></param>
+        </member>
+        <member name="P:BlinkSyncLib.InputParams.ExcludeHidden">
+            <summary>
+            Should exclude hidden files/directories in source
+            </summary>
+        </member>
+        <member name="P:BlinkSyncLib.InputParams.DeleteFromDest">
+            <summary>
+            Should delete files/directories from dest than are not present in source
+            </summary>
+        </member>
+        <member name="P:BlinkSyncLib.InputParams.ExcludeFiles">
+            <summary>
+            List of filespecs to exclude
+            </summary>
+        </member>
+        <member name="P:BlinkSyncLib.InputParams.ExcludeDirs">
+            <summary>
+            List of directory specs to exclude
+            </summary>
+        </member>
+        <member name="P:BlinkSyncLib.InputParams.IncludeFiles">
+            <summary>
+            List of filespecs to include 
+            </summary>
+        </member>
+        <member name="P:BlinkSyncLib.InputParams.IncludeDirs">
+            <summary>
+            List of directory specs to include
+            </summary>
+        </member>
+        <member name="P:BlinkSyncLib.InputParams.DeleteExcludeFiles">
+            <summary>
+            List of filespecs NOT to delete from dest
+            </summary>
+        </member>
+        <member name="P:BlinkSyncLib.InputParams.DeleteExcludeDirs">
+            <summary>
+            List of directory specs NOT to delete from dest
+            </summary>
+        </member>
+        <member name="P:BlinkSyncLib.SyncResults.FilesCopied">
+            <summary>
+            Get or set the number of files copied.
+            </summary>
+        </member>
+        <member name="P:BlinkSyncLib.SyncResults.FilesUpToDate">
+            <summary>
+            Get or set the number of files already up to date.
+            </summary>
+        </member>
+        <member name="P:BlinkSyncLib.SyncResults.FilesDeleted">
+            <summary>
+            Get or set the number of files deleted.
+            </summary>
+        </member>
+        <member name="P:BlinkSyncLib.SyncResults.FilesIgnored">
+            <summary>
+            Get or set the number of files not synchronized.
+            </summary>
+        </member>
+        <member name="P:BlinkSyncLib.SyncResults.DirectoriesCreated">
+            <summary>
+            Get or set the number of new folders created.
+            </summary>
+        </member>
+        <member name="P:BlinkSyncLib.SyncResults.DirectoriesDeleted">
+            <summary>
+            Get or set the number of folders removed.
+            </summary>
+        </member>
+        <member name="P:BlinkSyncLib.SyncResults.DirectoriesIgnored">
+            <summary>
+            Get or set the number of folder not synchronized and ignored.
+            </summary>
+        </member>
+        <member name="M:GLib.Mini.SmartConvert``1(System.Object)">
+            <summary>
+            对于int/long/float/double，会减少一次BOX和Unbox
+            </summary>
+        </member>
+        <member name="M:GLib.Mini.SmartEquals``1(``0,``0)">
+            <summary>
+            对于int/long/float/double，会减少一次BOX和Unbox
+            </summary>
+        </member>
+        <member name="M:GLib.Mini.itoa(System.Int32,System.Int32)">
+            <summary>
+            StackSafe
+            </summary>
+        </member>
+        <member name="T:GLib.EmptyLineBehavior">
+            <summary>
+            georgeguan2???@gm j*4?bbc
+            http://www.blackbeltcoder.com/Articles/files/reading-and-writing-csv-files-in-c
+            Determines how empty lines are interpreted when reading CSV files.
+            These values do not affect empty lines that occur within quoted fields
+            or empty lines that appear at the end of the input file.
+            </summary>
+        </member>
+        <member name="F:GLib.EmptyLineBehavior.NoColumns">
+            <summary>
+            Empty lines are interpreted as a line with zero columns.
+            </summary>
+        </member>
+        <member name="F:GLib.EmptyLineBehavior.EmptyColumn">
+            <summary>
+            Empty lines are interpreted as a line with a single empty column.
+            </summary>
+        </member>
+        <member name="F:GLib.EmptyLineBehavior.Ignore">
+            <summary>
+            Empty lines are skipped over as though they did not exist.
+            </summary>
+        </member>
+        <member name="F:GLib.EmptyLineBehavior.EndOfFile">
+            <summary>
+            An empty line is interpreted as the end of the input file.
+            </summary>
+        </member>
+        <member name="T:GLib.CsvFileCommon">
+            <summary>
+            Common base class for CSV reader and writer classes.
+            </summary>
+        </member>
+        <member name="F:GLib.CsvFileCommon.SpecialChars">
+            <summary>
+            These are special characters in CSV files. If a column contains any
+            of these characters, the entire column is wrapped in double quotes.
+            </summary>
+        </member>
+        <member name="P:GLib.CsvFileCommon.Delimiter">
+            <summary>
+            Gets/sets the character used for column delimiters.
+            </summary>
+        </member>
+        <member name="P:GLib.CsvFileCommon.Quote">
+            <summary>
+            Gets/sets the character used for column quotes.
+            </summary>
+        </member>
+        <member name="T:GLib.CsvFileReader">
+            <summary>
+            Class for reading from comma-separated-value (CSV) files
+            </summary>
+        </member>
+        <member name="M:GLib.CsvFileReader.#ctor(System.IO.Stream,GLib.EmptyLineBehavior)">
+            <summary>
+            Initializes a new instance of the CsvFileReader class for the
+            specified stream.
+            </summary>
+            <param name="stream">The stream to read from</param>
+            <param name="emptyLineBehavior">Determines how empty lines are handled</param>
+        </member>
+        <member name="M:GLib.CsvFileReader.#ctor(System.String,GLib.EmptyLineBehavior)">
+            <summary>
+            Initializes a new instance of the CsvFileReader class for the
+            specified file path.
+            </summary>
+            <param name="path">The name of the CSV file to read from</param>
+            <param name="emptyLineBehavior">Determines how empty lines are handled</param>
+        </member>
+        <member name="M:GLib.CsvFileReader.ReadRow(System.Collections.Generic.List{System.String})">
+            <summary>
+            Reads a row of columns from the current CSV file. Returns false if no
+            more data could be read because the end of the file was reached.
+            </summary>
+            <param name="columns">Collection to hold the columns read</param>
+        </member>
+        <member name="M:GLib.CsvFileReader.ReadQuotedColumn">
+            <summary>
+            Reads a quoted column by reading from the current line until a
+            closing quote is found or the end of the file is reached. On return,
+            the current position points to the delimiter or the end of the last
+            line in the file. Note: CurrLine may be set to null on return.
+            </summary>
+        </member>
+        <member name="M:GLib.CsvFileReader.ReadUnquotedColumn">
+            <summary>
+            Reads an unquoted column by reading from the current line until a
+            delimiter is found or the end of the line is reached. On return, the
+            current position points to the delimiter or the end of the current
+            line.
+            </summary>
+        </member>
+        <member name="T:GLib.CsvFileWriter">
+            <summary>
+            Class for writing to comma-separated-value (CSV) files.
+            </summary>
+        </member>
+        <member name="M:GLib.CsvFileWriter.#ctor(System.IO.Stream)">
+            <summary>
+            Initializes a new instance of the CsvFileWriter class for the
+            specified stream.
+            </summary>
+            <param name="stream">The stream to write to</param>
+        </member>
+        <member name="M:GLib.CsvFileWriter.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the CsvFileWriter class for the
+            specified file path.
+            </summary>
+            <param name="path">The name of the CSV file to write to</param>
+        </member>
+        <member name="M:GLib.CsvFileWriter.WriteRow(System.String)">
+            <summary>
+            此行只有一列数据
+            </summary>
+            <param name="column"></param>
+        </member>
+        <member name="M:GLib.CsvFileWriter.WriteRow(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Writes a row of columns to the current CSV file.
+            </summary>
+            <param name="columns">The list of columns to write</param>
+        </member>
+        <member name="T:GLib.ExeTimer">
+            <summary>
+            多线程情况下，可能会乱。
+            </summary>
+        </member>
+        <member name="M:GLib.Ext.ForEachG``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})">
+            <summary>
+            list可以null
+            </summary>
+        </member>
+        <member name="M:GLib.Ext.SafeSetEquals``1(System.Collections.ICollection,System.Collections.ICollection)">
+            <summary>
+            a和b都可以是null
+            </summary>
+        </member>
+        <member name="M:GLib.Ext.SafeAddRange``1(System.Collections.Generic.ICollection{``0},System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            多线程安全，null安全。
+            </summary>
+        </member>
+        <member name="M:GLib.StartStopHelper.ExceptionIfNotStarted(System.String)">
+            <summary>
+            如果没有启动，则抛出异常。
+            </summary>
+        </member>
+        <member name="M:GLib.StartStopHelper.Start_ExceptionIfStarted(System.String)">
+            <summary>
+            启动，如果已经启动，则抛出异常。
+            </summary>
+        </member>
+        <member name="M:GLib.StartStopHelper.Stop_ExceptionIfNotStarted(System.String)">
+            <summary>
+            如果没有启动，则抛出异常。
+            如果已经停止过了，则返回 true。
+            </summary>
+        </member>
+        <member name="M:GLib.BinOp.DecodeUShort(System.Byte[],System.Int32)">
+            <summary>
+            低位在高。
+            </summary>
+        </member>
+        <member name="M:GLib.BinOp.EncodeUShort(System.UInt16,System.Byte[],System.Int32)">
+            <summary>
+            低位在高。
+            </summary>
+        </member>
+        <member name="M:GLib.BinOp.DecodeUInt(System.Byte[],System.Int32)">
+            <summary>
+            低位在高。
+            </summary>
+        </member>
+        <member name="M:GLib.BinOp.EncodeUInt(System.UInt32,System.Byte[],System.Int32)">
+            <summary>
+            低位在高。
+            </summary>
+        </member>
+        <member name="T:GLib.ReflectionHelpers">
+            <summary>
+            Reflection helpers.
+            </summary>
+        </member>
+        <member name="M:GLib.ReflectionHelpers.IsStaticClass(System.Type)">
+            <summary>
+            Is this a static class?
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+            <remarks>This is a work around, as Type doesn't have this property. 
+            From: http://stackoverflow.com/questions/1175888/determine-if-a-type-is-static
+            </remarks>
+        </member>
+        <member name="T:GLib.SimpleObjectPool`1">
+            <summary>
+            最简单的利用Stack实现的一个ObjectPool。多线程不安全，使用前先看源码。
+            </summary>
+        </member>
+        <member name="T:GLib.StackTraceUsage">
+            <summary>
+            Value indicating how stack trace should be captured when processing the log event.
+            </summary>
+        </member>
+        <member name="F:GLib.StackTraceUsage.None">
+            <summary>
+            Stack trace should not be captured.
+            </summary>
+        </member>
+        <member name="F:GLib.StackTraceUsage.WithoutSource">
+            <summary>
+            Stack trace should be captured without source-level information.
+            </summary>
+        </member>
+        <member name="F:GLib.StackTraceUsage.WithSource">
+            <summary>
+            Stack trace should be captured including source-level information such as line numbers.
+            </summary>
+        </member>
+        <member name="F:GLib.StackTraceUsage.Max">
+            <summary>
+            Capture maximum amount of the stack trace information supported on the platform.
+            </summary>
+        </member>
+        <member name="T:GLib.StackTraceUsageUtils">
+            <summary>
+            Utilities for dealing with <see cref="T:GLib.StackTraceUsage"/> values.
+            </summary>
+        </member>
+        <member name="M:GLib.StackTraceUsageUtils.GetClassFullName">
+            <summary>
+            Gets the fully qualified name of the class invoking the calling method, including the 
+            namespace but not the assembly.    
+            </summary>
+        </member>
+        <member name="M:GLib.StackTraceUsageUtils.GetClassFullName(System.Diagnostics.StackFrame)">
+            <summary>
+            Gets the fully qualified name of the class invoking the calling method, including the 
+            namespace but not the assembly.    
+            </summary>
+            <param name="stackFrame">StackFrame from the calling method</param>
+            <returns>Fully qualified class name</returns>
+        </member>
+        <member name="M:GLib.StackTraceUsageUtils.LookupAssemblyFromStackFrame(System.Diagnostics.StackFrame)">
+            <summary>
+            Returns the assembly from the provided StackFrame (If not internal assembly)
+            </summary>
+            <returns>Valid asssembly, or null if assembly was internal</returns>
+        </member>
+        <member name="M:GLib.StackTraceUsageUtils.LookupClassNameFromStackFrame(System.Diagnostics.StackFrame)">
+            <summary>
+            Returns the classname from the provided StackFrame (If not from internal assembly)
+            </summary>
+            <param name="stackFrame"></param>
+            <returns>Valid class name, or empty string if assembly was internal</returns>
+        </member>
+        <member name="M:GLib.StringExt.ContainsUnicode(System.String)">
+            <summary>
+            如果str为空，则返回false
+            </summary>
+        </member>
+        <member name="M:GLib.StringExt.Sub(System.String,System.String,System.String[])">
+            <summary>
+            Path.GetFullPath(Path.Combine(path, sub))，如果sub前面有\或者/，则会先删除。
+            </summary>
+        </member>
+        <member name="M:GLib.StringExt.StandardSub(System.String,System.String)">
+            <summary>
+            Path.GetFullPath(Path.Combine(path, sub))，如果sub前面有\或者/，则会先删除。
+            </summary>
+        </member>
+        <member name="M:GLib.StringExt.Ext(System.String)">
+            <summary>
+            Path.GetExtension(path)
+            </summary>
+        </member>
+        <member name="M:GLib.StringExt.NameWithoutExt(System.String)">
+            <summary>
+            Path.GetFileNameWithoutExtension(path)
+            </summary>
+        </member>
+        <member name="M:GLib.StringExt.SafeDelFolder(System.String)">
+            <summary>
+            Directory.Delete(folder, true)，不抛出异常。
+            </summary>
+        </member>
+        <member name="M:GLib.StringExt.Delete(System.String)">
+            <summary>
+            File.Delete(path). 会忽略DirectoryNotFoundException
+            </summary>
+        </member>
+        <member name="M:GLib.StringExt.ClearDirectory(System.String)">
+            <summary>
+            清空目录里面的所有内容（包括所有子目录和文件）。目录不存在也不会异常。
+            </summary>
+        </member>
+        <member name="M:GLib.StringExt.SafeClearDirectory(System.String,System.Action{System.String})">
+            <summary>
+            清空目录里面的所有内容（包括所有子目录和文件）。目录不存在也不会异常。
+            会尝试清除每个文件后再尝试删除每个子目录。如遇到异常则忽略。
+            会调用onSomeFail显示被清除的目录或者文件列表。
+            如果没有清理干净，则返回false
+            </summary>
+        </member>
+        <member name="M:GLib.StringExt.SafeClearDirectory(System.String)">
+            <summary>
+            清空目录里面的所有内容（包括所有子目录和文件）。目录不存在也不会异常。
+            会尝试清除每个文件后再尝试删除每个子目录。如遇到异常则忽略。
+            返回无法被清除的目录或者文件列表。
+            </summary>
+        </member>
+        <member name="M:GLib.StringExt.CopyFileTo(System.String,System.String,System.Boolean)">
+            <summary>
+            File.Copy(file, dst, overWrite)
+            会自动创建目标目录
+            </summary>
+        </member>
+        <member name="M:GLib.StringExt.WriteAllText(System.String,System.String)">
+            <summary>
+            会自动创建好文件所在目录。
+            </summary>
+        </member>
+        <member name="M:GLib.StringExt.WriteAllBytes(System.String,System.Byte[])">
+            <summary>
+            会自动创建好文件所在目录。
+            </summary>
+        </member>
+        <member name="M:GLib.StringExt.ReadAllText(System.String)">
+            <summary>
+            File.ReadAllText(file)
+            </summary>
+        </member>
+        <member name="M:GLib.StringExt.ReadAllBytes(System.IO.FileInfo)">
+            <summary>
+            File.ReadAllBytes(fi.FullName)
+            </summary>
+        </member>
+        <member name="M:GLib.StringExt.ReadAllLines(System.String)">
+            <summary>
+            File.ReadAllLines(path)
+            </summary>
+        </member>
+        <member name="M:GLib.StringExt.ReadAllLine(System.IO.FileInfo)">
+            <summary>
+            File.ReadAllLines(path.FullName)
+            </summary>
+        </member>
+        <member name="M:GLib.StringExt.SafeLength(System.String)">
+            <summary>
+            如果str是null，则长度为0
+            </summary>
+        </member>
+        <member name="M:GLib.StringExt.NullOrEmpty(System.String)">
+            <summary>
+            string.IsNullOrEmpty()
+            </summary>
+        </member>
+        <member name="M:GLib.StringExt.NullOrWhiteSpace(System.String)">
+            <summary>
+            NULL，或者全部的字符符合 IsWhiteSpace()。
+            </summary>
+        </member>
+        <member name="M:GLib.StringExt.Visible(System.String)">
+            <summary>
+            是否可见。至少有一个字符不符合 IsWhiteSpace()。
+            </summary>
+        </member>
+        <member name="T:GLib.StringExtensions">
+            <summary>
+                Provides extension methods to the <see cref="T:System.String">System.string</see> object.
+            </summary>
+        </member>
+        <member name="M:GLib.StringExtensions.IsDateTime(System.String,System.String)">
+            <summary>
+                Checks if date with dateFormat is parse-able to System.DateTime format returns boolean value if true else false
+            </summary>
+            <param name="data">String date</param>
+            <param name="dateFormat">date format example dd/MM/yyyy HH:mm:ss</param>
+            <returns>boolean True False if is valid System.DateTime</returns>
+        </member>
+        <member name="M:GLib.StringExtensions.SafeToInt32(System.String,System.Int32)">
+            <summary>
+            如果无法解析，则返回defaultValue
+            </summary>
+        </member>
+        <member name="M:GLib.StringExtensions.ToInt32(System.String)">
+            <summary>
+            如果无法解析，则返回0
+            </summary>
+        </member>
+        <member name="M:GLib.StringExtensions.ToInt64(System.String)">
+            <summary>
+                Converts the string representation of a number to its 64-bit signed integer equivalent
+            </summary>
+            <param name="value">string containing a number to convert</param>
+            <returns>System.Int64</returns>
+            <remarks>
+                The conversion fails if the string parameter is null, is not of the correct format, or represents a number
+                less than System.Int64.MinValue or greater than System.Int64.MaxValue
+            </remarks>
+        </member>
+        <member name="M:GLib.StringExtensions.ToInt16(System.String)">
+            <summary>
+                Converts the string representation of a number to its 16-bit signed integer equivalent
+            </summary>
+            <param name="value">string containing a number to convert</param>
+            <returns>System.Int16</returns>
+            <remarks>
+                The conversion fails if the string parameter is null, is not of the correct format, or represents a number
+                less than System.Int16.MinValue or greater than System.Int16.MaxValue
+            </remarks>
+        </member>
+        <member name="M:GLib.StringExtensions.ToDecimal(System.String)">
+            <summary>
+                Converts the string representation of a number to its System.Decimal equivalent
+            </summary>
+            <param name="value">string containing a number to convert</param>
+            <returns>System.Decimal</returns>
+            <remarks>
+                The conversion fails if the s parameter is null, is not a number in a valid format, or represents a number
+                less than System.Decimal.MinValue or greater than System.Decimal.MaxValue
+            </remarks>
+        </member>
+        <member name="M:GLib.StringExtensions.ToBoolean(System.String)">
+            <summary>
+                Converts string to its boolean equivalent
+            </summary>
+            <param name="value">string to convert</param>
+            <returns>boolean equivalent</returns>
+            <remarks>
+                <exception cref="T:System.ArgumentException">
+                    thrown in the event no boolean equivalent found or an empty or whitespace
+                    string is passed
+                </exception>
+            </remarks>
+        </member>
+        <member name="M:GLib.StringExtensions.SplitTo``1(System.String,System.Char[])">
+            <summary>
+                Returns an enumerable collection of the specified type containing the substrings in this instance that are
+                delimited by elements of a specified Char array
+            </summary>
+            <param name="str">The string.</param>
+            <param name="separator">
+                An array of Unicode characters that delimit the substrings in this instance, an empty array containing no
+                delimiters, or null.
+            </param>
+            <typeparam name="T">
+                The type of the element to return in the collection, this type must implement IConvertible.
+            </typeparam>
+            <returns>
+                An enumerable collection whose elements contain the substrings in this instance that are delimited by one or more
+                characters in separator.
+            </returns>
+        </member>
+        <member name="M:GLib.StringExtensions.SplitTo``1(System.String,System.StringSplitOptions,System.Char[])">
+            <summary>
+                Returns an enumerable collection of the specified type containing the substrings in this instance that are
+                delimited by elements of a specified Char array
+            </summary>
+            <param name="str">The string.</param>
+            <param name="options">StringSplitOptions <see cref="T:System.StringSplitOptions" /></param>
+            <param name="separator">
+                An array of Unicode characters that delimit the substrings in this instance, an empty array containing no
+                delimiters, or null.
+            </param>
+            <typeparam name="T">
+                The type of the element to return in the collection, this type must implement IConvertible.
+            </typeparam>
+            <returns>
+                An enumerable collection whose elements contain the substrings in this instance that are delimited by one or more
+                characters in separator.
+            </returns>
+        </member>
+        <member name="M:GLib.StringExtensions.Format(System.String,System.Object)">
+            <summary>
+                Replaces one or more format items in a specified string with the string representation of a specified object.
+            </summary>
+            <param name="value">A composite format string</param>
+            <param name="arg0">An System.Object to format</param>
+            <returns>A copy of format in which any format items are replaced by the string representation of arg0</returns>
+            <exception cref="T:System.ArgumentNullException">format or args is null.</exception>
+            <exception cref="T:System.FormatException">
+                format is invalid.-or- The index of a format item is less than zero, or
+                greater than or equal to the length of the args array.
+            </exception>
+        </member>
+        <member name="M:GLib.StringExtensions.Format(System.String,System.Object[])">
+            <summary>
+                Replaces the format item in a specified string with the string representation of a corresponding object in a
+                specified array.
+            </summary>
+            <param name="value">A composite format string</param>
+            <param name="args">An object array that contains zero or more objects to format</param>
+            <returns>
+                A copy of format in which the format items have been replaced by the string representation of the
+                corresponding objects in args
+            </returns>
+            <exception cref="T:System.ArgumentNullException">format or args is null.</exception>
+            <exception cref="T:System.FormatException">
+                format is invalid.-or- The index of a format item is less than zero, or
+                greater than or equal to the length of the args array.
+            </exception>
+        </member>
+        <member name="M:GLib.StringExtensions.GetEmptyStringIfNull(System.String)">
+            <summary>
+                Gets empty String if passed value is of type Null/Nothing
+            </summary>
+            <param name="val">val</param>
+            <returns>System.String</returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:GLib.StringExtensions.GetNullIfEmptyString(System.String)">
+            <summary>
+                Checks if a string is null and returns String if not Empty else returns null/Nothing
+            </summary>
+            <param name="myValue">String value</param>
+            <returns>null/nothing if String IsEmpty</returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:GLib.StringExtensions.IsInteger(System.String)">
+            <summary>
+                IsInteger Function checks if a string is a valid int32 value
+            </summary>
+            <param name="val">val</param>
+            <returns>Boolean True if isInteger else False</returns>
+        </member>
+        <member name="M:GLib.StringExtensions.Capitalize(System.String)">
+            <summary>
+                Read in a sequence of words from standard input and capitalize each
+                one (make first letter uppercase; make rest lowercase).
+            </summary>
+            <param name="s">string</param>
+            <returns>Word with capitalization</returns>
+        </member>
+        <member name="M:GLib.StringExtensions.FirstCharacter(System.String)">
+            <summary>
+                Gets first character in string
+            </summary>
+            <param name="val">val</param>
+            <returns>System.string</returns>
+        </member>
+        <member name="M:GLib.StringExtensions.LastCharacter(System.String)">
+            <summary>
+                Gets last character in string
+            </summary>
+            <param name="val">val</param>
+            <returns>System.string</returns>
+        </member>
+        <member name="M:GLib.StringExtensions.EndsWithIgnoreCase(System.String,System.String)">
+            <summary>
+                Check a String ends with another string ignoring the case.
+            </summary>
+            <param name="val">string</param>
+            <param name="suffix">suffix</param>
+            <returns>true or false</returns>
+        </member>
+        <member name="M:GLib.StringExtensions.StartsWithIgnoreCase(System.String,System.String)">
+            <summary>
+                Check a String starts with another string ignoring the case.
+            </summary>
+            <param name="val">string</param>
+            <param name="prefix">prefix</param>
+            <returns>true or false</returns>
+        </member>
+        <member name="M:GLib.StringExtensions.Replace(System.String,System.Char[])">
+            <summary>
+                Replace specified characters with an empty string.
+            </summary>
+            <param name="s">the string</param>
+            <param name="chars">list of characters to replace from the string</param>
+            <example>
+                string s = "Friends";
+                s = s.Replace('F', 'r','i','s');  //s becomes 'end;
+            </example>
+            <returns>System.string</returns>
+        </member>
+        <member name="M:GLib.StringExtensions.RemoveChars(System.String,System.Char[])">
+            <summary>
+                Remove Characters from string
+            </summary>
+            <param name="s">string to remove characters</param>
+            <param name="chars">array of chars</param>
+            <returns>System.string</returns>
+        </member>
+        <member name="M:GLib.StringExtensions.IsEmailAddress(System.String)">
+            <summary>
+                Validate email address
+            </summary>
+            <param name="email">string email address</param>
+            <returns>true or false if email if valid</returns>
+        </member>
+        <member name="M:GLib.StringExtensions.IsNumeric(System.String)">
+            <summary>
+                IsNumeric checks if a string is a valid floating value
+            </summary>
+            <param name="val"></param>
+            <returns>Boolean True if isNumeric else False</returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:GLib.StringExtensions.Truncate(System.String,System.Int32)">
+            <summary>
+                Truncate String and append ... at end
+            </summary>
+            <param name="s">String to be truncated</param>
+            <param name="maxLength">number of chars to truncate</param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:GLib.StringExtensions.GetDefaultIfEmpty(System.String,System.String)">
+            <summary>
+                Function returns a default String value if given value is null or empty
+            </summary>
+            <param name="myValue">String value to check if isEmpty</param>
+            <param name="defaultValue">default value to return if String value isEmpty</param>
+            <returns>returns either String value or default value if IsEmpty</returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:GLib.StringExtensions.ToBytes(System.String)">
+            <summary>
+                Convert a string to its equivalent byte array
+            </summary>
+            <param name="val">string to convert</param>
+            <returns>System.byte array</returns>
+        </member>
+        <member name="M:GLib.StringExtensions.Reverse(System.String)">
+            <summary>
+                Reverse string
+            </summary>
+            <param name="val">string to reverse</param>
+            <returns>System.string</returns>
+        </member>
+        <member name="M:GLib.StringExtensions.ParseStringToCsv(System.String)">
+            <summary>
+                Appends String quotes for type CSV data
+            </summary>
+            <param name="val">val</param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:GLib.StringExtensions.Encrypt(System.String,System.String)">
+            <summary>
+                Encrypt a string using the supplied key. Encoding is done using RSA encryption.
+            </summary>
+            <param name="stringToEncrypt">String that must be encrypted.</param>
+            <param name="key">Encryption key</param>
+            <returns>A string representing a byte array separated by a minus sign.</returns>
+            <exception cref="T:System.ArgumentException">Occurs when stringToEncrypt or key is null or empty.</exception>
+        </member>
+        <member name="M:GLib.StringExtensions.Decrypt(System.String,System.String)">
+            <summary>
+                Decrypt a string using the supplied key. Decoding is done using RSA encryption.
+            </summary>
+            <param name="stringToDecrypt">String that must be decrypted.</param>
+            <param name="key">Decryption key.</param>
+            <returns>The decrypted string or null if decryption failed.</returns>
+            <exception cref="T:System.ArgumentException">Occurs when stringToDecrypt or key is null or empty.</exception>
+        </member>
+        <member name="M:GLib.StringExtensions.CountOccurrences(System.String,System.String)">
+            <summary>
+                Count number of occurrences in string
+            </summary>
+            <param name="val">string containing text</param>
+            <param name="stringToMatch">string or pattern find</param>
+            <returns></returns>
+        </member>
+        <member name="M:GLib.StringExtensions.RemovePrefix(System.String,System.String,System.Boolean)">
+            <summary>
+                Removes the first part of the string, if no match found return original string
+            </summary>
+            <param name="val">string to remove prefix</param>
+            <param name="prefix">prefix</param>
+            <param name="ignoreCase">Indicates whether the compare should ignore case</param>
+            <returns>trimmed string with no prefix or original string</returns>
+        </member>
+        <member name="M:GLib.StringExtensions.RemoveSuffix(System.String,System.String,System.Boolean)">
+            <summary>
+                Removes the end part of the string, if no match found return original string
+            </summary>
+            <param name="val">string to remove suffix</param>
+            <param name="suffix">suffix</param>
+            <param name="ignoreCase">Indicates whether the compare should ignore case</param>
+            <returns>trimmed string with no suffix or original string</returns>
+        </member>
+        <member name="M:GLib.StringExtensions.AppendSuffixIfMissing(System.String,System.String,System.Boolean)">
+            <summary>
+                Appends the suffix to the end of the string if the string does not already end in the suffix.
+            </summary>
+            <param name="val">string to append suffix</param>
+            <param name="suffix">suffix</param>
+            <param name="ignoreCase">Indicates whether the compare should ignore case</param>
+            <returns></returns>
+        </member>
+        <member name="M:GLib.StringExtensions.AppendPrefixIfMissing(System.String,System.String,System.Boolean)">
+            <summary>
+                Appends the prefix to the start of the string if the string does not already start with prefix.
+            </summary>
+            <param name="val">string to append prefix</param>
+            <param name="prefix">prefix</param>
+            <param name="ignoreCase">Indicates whether the compare should ignore case</param>
+            <returns></returns>
+        </member>
+        <member name="M:GLib.StringExtensions.IsAlpha(System.String)">
+            <summary>
+                Checks if the String contains only Unicode letters.
+                null will return false. An empty String ("") will return false.
+            </summary>
+            <param name="val">string to check if is Alpha</param>
+            <returns>true if only contains letters, and is non-null</returns>
+        </member>
+        <member name="M:GLib.StringExtensions.IsAlphaNumeric(System.String)">
+            <summary>
+                Checks if the String contains only Unicode letters, digits.
+                null will return false. An empty String ("") will return false.
+            </summary>
+            <param name="val">string to check if is Alpha or Numeric</param>
+            <returns></returns>
+        </member>
+        <member name="M:GLib.StringExtensions.CreateHashSha512(System.String)">
+            <summary>
+                Convert string to Hash using Sha512
+            </summary>
+            <param name="val">string to hash</param>
+            <returns>Hashed string</returns>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:GLib.StringExtensions.CreateHashSha256(System.String)">
+            <summary>
+                Convert string to Hash using Sha256
+            </summary>
+            <param name="val">string to hash</param>
+            <returns>Hashed string</returns>
+        </member>
+        <member name="M:GLib.StringExtensions.ReverseSlash(System.String,System.Int32)">
+            <summary>
+                Reverse back or forward slashes
+            </summary>
+            <param name="val">string</param>
+            <param name="direction">
+                0 - replace forward slash with back
+                1 - replace back with forward slash
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:GLib.StringExtensions.ReplaceLineFeeds(System.String)">
+            <summary>
+                Replace Line Feeds
+            </summary>
+            <param name="val">string to remove line feeds</param>
+            <returns>System.string</returns>
+        </member>
+        <member name="M:GLib.StringExtensions.IsValidIPv4(System.String)">
+            <summary>
+                Validates if a string is valid IPv4
+                Regular expression taken from <a href="http://regexlib.com/REDetails.aspx?regexp_id=2035">Regex reference</a>
+            </summary>
+            <param name="val">string IP address</param>
+            <returns>true if string matches valid IP address else false</returns>
+        </member>
+        <member name="M:GLib.StringExtensions.GetByteSize(System.String,System.Text.Encoding)">
+            <summary>
+                Calculates the amount of bytes occupied by the input string encoded as the encoding specified
+            </summary>
+            <param name="val">The input string to check</param>
+            <param name="encoding">The encoding to use</param>
+            <returns>The total size of the input string in bytes</returns>
+            <exception cref="T:System.ArgumentNullException">input is null</exception>
+            <exception cref="T:System.ArgumentNullException">encoding is null</exception>
+        </member>
+        <member name="M:GLib.StringExtensions.Left(System.String,System.Int32)">
+            <summary>
+                Extracts the left part of the input string limited with the length parameter
+            </summary>
+            <param name="val">The input string to take the left part from</param>
+            <param name="length">The total number characters to take from the input string</param>
+            <returns>The substring starting at startIndex 0 until length</returns>
+            <exception cref="T:System.ArgumentNullException">input is null</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">Length is smaller than zero or higher than the length of input</exception>
+        </member>
+        <member name="M:GLib.StringExtensions.Right(System.String,System.Int32)">
+            <summary>
+                Extracts the right part of the input string limited with the length parameter
+            </summary>
+            <param name="val">The input string to take the right part from</param>
+            <param name="length">The total number characters to take from the input string</param>
+            <returns>The substring taken from the input string</returns>
+            <exception cref="T:System.ArgumentNullException">input is null</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">Length is smaller than zero or higher than the length of input</exception>
+        </member>
+        <member name="M:GLib.StringExtensions.ToTextElements(System.String)">
+            <summary>
+                ToTextElements
+            </summary>
+            <param name="val"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GLib.StringExtensions.DoesNotStartWith(System.String,System.String)">
+            <summary>
+                Check if a string does not start with prefix
+            </summary>
+            <param name="val">string to evaluate</param>
+            <param name="prefix">prefix</param>
+            <returns>true if string does not match prefix else false, null values will always evaluate to false</returns>
+        </member>
+        <member name="M:GLib.StringExtensions.DoesNotEndWith(System.String,System.String)">
+            <summary>
+                Check if a string does not end with prefix
+            </summary>
+            <param name="val">string to evaluate</param>
+            <param name="suffix">suffix</param>
+            <returns>true if string does not match prefix else false, null values will always evaluate to false</returns>
+        </member>
+        <member name="M:GLib.StringExtensions.IsNull(System.String)">
+            <summary>
+                Checks if a string is null
+            </summary>
+            <param name="val">string to evaluate</param>
+            <returns>true if string is null else false</returns>
+        </member>
+        <member name="M:GLib.StringExtensions.IsNullOrEmpty(System.String)">
+            <summary>
+                Checks if a string is null or empty
+            </summary>
+            <param name="val">string to evaluate</param>
+            <returns>true if string is null or is empty else false</returns>
+        </member>
+        <member name="M:GLib.StringExtensions.IsMinLength(System.String,System.Int32)">
+            <summary>
+                Checks if string length is a certain minimum number of characters, does not ignore leading and trailing
+                white-space.
+                null strings will always evaluate to false.
+            </summary>
+            <param name="val">string to evaluate minimum length</param>
+            <param name="minCharLength">minimum allowable string length</param>
+            <returns>true if string is of specified minimum length</returns>
+        </member>
+        <member name="M:GLib.StringExtensions.IsMaxLength(System.String,System.Int32)">
+            <summary>
+                Checks if string length is consists of specified allowable maximum char length. does not ignore leading and
+                trailing white-space.
+                null strings will always evaluate to false.
+            </summary>
+            <param name="val">string to evaluate maximum length</param>
+            <param name="maxCharLength">maximum allowable string length</param>
+            <returns>true if string has specified maximum char length</returns>
+        </member>
+        <member name="M:GLib.StringExtensions.IsLength(System.String,System.Int32,System.Int32)">
+            <summary>
+                Checks if string length satisfies minimum and maximum allowable char length. does not ignore leading and
+                trailing white-space
+            </summary>
+            <param name="val">string to evaluate</param>
+            <param name="minCharLength">minimum char length</param>
+            <param name="maxCharLength">maximum char length</param>
+            <returns>true if string satisfies minimum and maximum allowable length</returns>
+        </member>
+        <member name="M:GLib.StringExtensions.GetLength(System.String)">
+            <summary>
+                Gets the number of characters in string checks if string is null
+            </summary>
+            <param name="val">string to evaluate length</param>
+            <returns>total number of chars or null if string is null</returns>
+        </member>
+        <member name="M:GLib.XMLUtils.DeserializeXML``1(System.String)">
+            <summary>  
+            反序列化XML为类实例  
+            </summary>  
+        </member>
+        <member name="M:GLib.XMLUtils.GetXmlSerializer(System.Type)">
+            <summary>
+            ThreadSafe
+            </summary>
+        </member>
+        <member name="M:GLib.XMLUtils.SerializeXML``1(``0)">
+            <summary>  
+            序列化类实例为XML  
+            </summary>  
+        </member>
+        <member name="F:HSFrameWork.Common.ReuseScope.Container">
+            <summary>
+            在创建的Container内只有一个实例，每次调用Resolve都只会返回同一个。
+            </summary>
+        </member>
+        <member name="F:HSFrameWork.Common.ReuseScope.None">
+            <summary>
+            每次调用Resolve都会创建一个新的。
+            </summary>
+        </member>
+        <member name="F:HSFrameWork.Common.Container.HideResolveException">
+            <summary>
+            缺省是true，也即是说不抛出异常。
+            </summary>
+        </member>
+        <member name="M:HSFrameWork.Common.Container.NewEmptyContainer">
+            <summary>
+            创建一个新的私有Container
+            </summary>
+        </member>
+    </members>
+</doc>

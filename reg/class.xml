@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+	
+		<bean name="class" from="Z职业.xlsx" to="class.xml">
+			<variable name="key" fromCol="KEY" type="string" />
+            <variable name="showname" fromCol="名称" type="string" />
+			<variable name="levelimit" fromCol="等级上限" type="int" defaultValue="10"/>
+			<variable name="strgrowth" fromCol="力量成长" type="int" defaultValue="0"/>
+			<variable name="intgrowth" fromCol="智力成长" type="int" defaultValue="0"/>
+			<variable name="agigrowth" fromCol="敏捷成长" type="int" defaultValue="0"/>
+			<variable name="pergrowth" fromCol="感知成长" type="int" defaultValue="0"/>
+			<variable name="lucgrowth" fromCol="幸运成长" type="int" defaultValue="0"/>
+			<variable name="chagrowth" fromCol="魅力成长" type="int" defaultValue="0"/>
+			<variable name="skilllist" fromCol="技能列表" type="string" />
+			<variable name="talentlist" fromCol="天赋列表" type="string" />
+		</bean>
+	
+
+	
+	

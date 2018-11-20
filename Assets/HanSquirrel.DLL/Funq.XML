@@ -1,0 +1,727 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Funq</name>
+    </assembly>
+    <members>
+        <member name="T:HSFrameWork.Funq.FunqContainer">
+            <summary>
+			Main container class for components, supporting container hierarchies and
+			lifetime management of <see cref="T:System.IDisposable" /> instances.
+		</summary>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.RegisterAutoWired``1">
+            <summary>
+            Register an autowired dependency
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.RegisterAutoWiredAs``2">
+            <summary>
+            Register an autowired dependency as a separate type
+            </summary>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.RegisterAs``2">
+            <summary>
+            Alias for RegisterAutoWiredAs
+            </summary>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.AutoWire(System.Object)">
+            <summary>
+            Auto-wires an existing instance, 
+            ie all public properties are tried to be resolved.
+            </summary>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.GenerateAutoWireFn``1">
+            <summary>
+            Generates a function which creates and auto-wires TService/>.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.AutoWire(HSFrameWork.Funq.FunqContainer,System.Object)">
+            <summary>
+            Auto-wires an existing instance of a specific type.
+            The auto-wiring progress is also cached to be faster 
+            when calling next time with the same type.
+            </summary>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.#ctor">
+            <summary>
+			Initializes a new empty container.
+		</summary>
+        </member>
+        <member name="P:HSFrameWork.Funq.FunqContainer.DefaultOwner">
+            <summary>
+			Default owner for new registrations. <see cref="F:HSFrameWork.Funq.Owner.Container" /> by default.
+		</summary>
+        </member>
+        <member name="P:HSFrameWork.Funq.FunqContainer.DefaultReuse">
+            <summary>
+			Default reuse scope for new registrations. <see cref="!:ReuseScope.Hierarchy" /> by default.
+		</summary>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.CreateChildContainer">
+            <summary>
+			Creates a child container of the current one, which exposes its
+			current service registration to the new child container.
+		</summary>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.Dispose">
+            <summary>
+			Disposes the container and all instances owned by it (see
+			<see cref="F:HSFrameWork.Funq.Owner.Container" />), as well as all child containers
+			created through <see cref="M:HSFrameWork.Funq.FunqContainer.CreateChildContainer" />.
+		</summary>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.Register``1(``0)">
+            <summary>
+			Registers a service instance with the container. This instance 
+			will have <see cref="F:HSFrameWork.Funq.Owner.External" /> and <see cref="!:ReuseScope.Hierarchy" /> 
+			behavior.
+		</summary><param name="instance">Service instance to use.</param>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.Register``1(System.String,``0)">
+            <summary>
+			Registers a named service instance with the container. This instance
+			will have <see cref="F:HSFrameWork.Funq.Owner.External" /> and <see cref="!:ReuseScope.Hierarchy" />
+			behavior.
+		</summary><param name="name">Name of the service to register.</param><param name="instance">Service instance to use.</param>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.LazyResolve``1">
+            <summary>
+			Retrieves a function that can be used to lazily resolve an instance 
+			of the service when needed.
+		</summary><typeparam name="TService">Type of the service to retrieve.</typeparam><returns>The function that can resolve to the service instance when invoked.</returns><exception cref="T:HSFrameWork.Funq.ResolutionException">The requested service has not been registered previously.</exception>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.LazyResolve``2">
+            <!-- No matching elements were found for the following include tag --><include file="Container.xdoc" path="docs/doc[@for=&quot;Container.LazyResolve{TService,TArgs}&quot;]/*" />
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.LazyResolve``3">
+            <!-- No matching elements were found for the following include tag --><include file="Container.xdoc" path="docs/doc[@for=&quot;Container.LazyResolve{TService,TArgs}&quot;]/*" />
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.LazyResolve``4">
+            <!-- No matching elements were found for the following include tag --><include file="Container.xdoc" path="docs/doc[@for=&quot;Container.LazyResolve{TService,TArgs}&quot;]/*" />
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.LazyResolve``5">
+            <!-- No matching elements were found for the following include tag --><include file="Container.xdoc" path="docs/doc[@for=&quot;Container.LazyResolve{TService,TArgs}&quot;]/*" />
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.LazyResolve``6">
+            <!-- No matching elements were found for the following include tag --><include file="Container.xdoc" path="docs/doc[@for=&quot;Container.LazyResolve{TService,TArgs}&quot;]/*" />
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.LazyResolve``7">
+            <!-- No matching elements were found for the following include tag --><include file="Container.xdoc" path="docs/doc[@for=&quot;Container.LazyResolve{TService,TArgs}&quot;]/*" />
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.LazyResolve``1(System.String)">
+            <summary>
+			Retrieves a function that can be used to lazily resolve an instance
+			of the service with the given name when needed.
+		</summary><typeparam name="TService">Type of the service to retrieve.</typeparam><param name="name">Name of the service to retrieve.</param><returns>The function that can resolve to the service instance with the given name when invoked.</returns><exception cref="T:HSFrameWork.Funq.ResolutionException">The requested service with the given name has not been registered previously.</exception>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.LazyResolve``2(System.String)">
+            <summary>
+			Retrieves a function that can be used to lazily resolve an instance
+			of the service of the given type, name and service constructor arguments when needed.
+		</summary><param name="name">Name of the service to retrieve.</param><returns>The function that can resolve to the service instance with the given and service constructor arguments name when invoked.</returns><exception cref="T:HSFrameWork.Funq.ResolutionException">The requested service with the given name and constructor arguments has not been registered previously.</exception>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.LazyResolve``3(System.String)">
+            <summary>
+			Retrieves a function that can be used to lazily resolve an instance
+			of the service of the given type, name and service constructor arguments when needed.
+		</summary><param name="name">Name of the service to retrieve.</param><returns>The function that can resolve to the service instance with the given and service constructor arguments name when invoked.</returns><exception cref="T:HSFrameWork.Funq.ResolutionException">The requested service with the given name and constructor arguments has not been registered previously.</exception>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.LazyResolve``4(System.String)">
+            <summary>
+			Retrieves a function that can be used to lazily resolve an instance
+			of the service of the given type, name and service constructor arguments when needed.
+		</summary><param name="name">Name of the service to retrieve.</param><returns>The function that can resolve to the service instance with the given and service constructor arguments name when invoked.</returns><exception cref="T:HSFrameWork.Funq.ResolutionException">The requested service with the given name and constructor arguments has not been registered previously.</exception>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.LazyResolve``5(System.String)">
+            <summary>
+			Retrieves a function that can be used to lazily resolve an instance
+			of the service of the given type, name and service constructor arguments when needed.
+		</summary><param name="name">Name of the service to retrieve.</param><returns>The function that can resolve to the service instance with the given and service constructor arguments name when invoked.</returns><exception cref="T:HSFrameWork.Funq.ResolutionException">The requested service with the given name and constructor arguments has not been registered previously.</exception>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.LazyResolve``6(System.String)">
+            <summary>
+			Retrieves a function that can be used to lazily resolve an instance
+			of the service of the given type, name and service constructor arguments when needed.
+		</summary><param name="name">Name of the service to retrieve.</param><returns>The function that can resolve to the service instance with the given and service constructor arguments name when invoked.</returns><exception cref="T:HSFrameWork.Funq.ResolutionException">The requested service with the given name and constructor arguments has not been registered previously.</exception>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.LazyResolve``7(System.String)">
+            <summary>
+			Retrieves a function that can be used to lazily resolve an instance
+			of the service of the given type, name and service constructor arguments when needed.
+		</summary><param name="name">Name of the service to retrieve.</param><returns>The function that can resolve to the service instance with the given and service constructor arguments name when invoked.</returns><exception cref="T:HSFrameWork.Funq.ResolutionException">The requested service with the given name and constructor arguments has not been registered previously.</exception>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.Register``1(System.Func{HSFrameWork.Funq.FunqContainer,``0})">
+            <summary>
+			Registers the given service by providing a factory delegate to
+			instantiate it.
+		</summary><typeparam name="TService">The service type to register.</typeparam><param name="factory">The factory delegate to initialize new instances of the service when needed.</param><returns>The registration object to perform further configuration via its fluent interface.</returns>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.Register``2(System.Func{HSFrameWork.Funq.FunqContainer,``1,``0})">
+            <summary>
+			Registers the given service by providing a factory delegate that receives arguments to
+			instantiate it.
+		</summary><typeparam name="TService">The service type to register.</typeparam><typeparam name="TArg">First argument that should be passed to the factory delegate to create the instace.</typeparam><param name="factory">The factory delegate to initialize new instances of the service when needed.</param><returns>The registration object to perform further configuration via its fluent interface.</returns>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.Register``3(System.Func{HSFrameWork.Funq.FunqContainer,``1,``2,``0})">
+            <summary>
+			Registers the given service by providing a factory delegate that receives arguments to
+			instantiate it.
+		</summary><typeparam name="TService">The service type to register.</typeparam><typeparam name="TArg1">First argument that should be passed to the factory delegate to create the instace.</typeparam><typeparam name="TArg2">Second argument that should be passed to the factory delegate to create the instace.</typeparam><param name="factory">The factory delegate to initialize new instances of the service when needed.</param><returns>The registration object to perform further configuration via its fluent interface.</returns>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.Register``4(System.Func{HSFrameWork.Funq.FunqContainer,``1,``2,``3,``0})">
+            <summary>
+			Registers the given service by providing a factory delegate that receives arguments to
+			instantiate it.
+		</summary><typeparam name="TService">The service type to register.</typeparam><typeparam name="TArg1">First argument that should be passed to the factory delegate to create the instace.</typeparam><typeparam name="TArg2">Second argument that should be passed to the factory delegate to create the instace.</typeparam><typeparam name="TArg3">Third argument that should be passed to the factory delegate to create the instace.</typeparam><param name="factory">The factory delegate to initialize new instances of the service when needed.</param><returns>The registration object to perform further configuration via its fluent interface.</returns>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.Register``5(HSFrameWork.Funq.Func{HSFrameWork.Funq.FunqContainer,``1,``2,``3,``4,``0})">
+            <summary>
+			Registers the given service by providing a factory delegate that receives arguments to
+			instantiate it.
+		</summary><typeparam name="TService">The service type to register.</typeparam><typeparam name="TArg1">First argument that should be passed to the factory delegate to create the instace.</typeparam><typeparam name="TArg2">Second argument that should be passed to the factory delegate to create the instace.</typeparam><typeparam name="TArg3">Third argument that should be passed to the factory delegate to create the instace.</typeparam><typeparam name="TArg4">Fourth argument that should be passed to the factory delegate to create the instace.</typeparam><param name="factory">The factory delegate to initialize new instances of the service when needed.</param><returns>The registration object to perform further configuration via its fluent interface.</returns>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.Register``6(HSFrameWork.Funq.Func{HSFrameWork.Funq.FunqContainer,``1,``2,``3,``4,``5,``0})">
+            <summary>
+			Registers the given service by providing a factory delegate that receives arguments to
+			instantiate it.
+		</summary><typeparam name="TService">The service type to register.</typeparam><typeparam name="TArg1">First argument that should be passed to the factory delegate to create the instace.</typeparam><typeparam name="TArg2">Second argument that should be passed to the factory delegate to create the instace.</typeparam><typeparam name="TArg3">Third argument that should be passed to the factory delegate to create the instace.</typeparam><typeparam name="TArg4">Fourth argument that should be passed to the factory delegate to create the instace.</typeparam><typeparam name="TArg5">Fifth argument that should be passed to the factory delegate to create the instace.</typeparam><param name="factory">The factory delegate to initialize new instances of the service when needed.</param><returns>The registration object to perform further configuration via its fluent interface.</returns>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.Register``7(HSFrameWork.Funq.Func{HSFrameWork.Funq.FunqContainer,``1,``2,``3,``4,``5,``6,``0})">
+            <summary>
+			Registers the given service by providing a factory delegate that receives arguments to
+			instantiate it.
+		</summary><typeparam name="TService">The service type to register.</typeparam><typeparam name="TArg1">First argument that should be passed to the factory delegate to create the instace.</typeparam><typeparam name="TArg2">Second argument that should be passed to the factory delegate to create the instace.</typeparam><typeparam name="TArg3">Third argument that should be passed to the factory delegate to create the instace.</typeparam><typeparam name="TArg4">Fourth argument that should be passed to the factory delegate to create the instace.</typeparam><typeparam name="TArg5">Fifth argument that should be passed to the factory delegate to create the instace.</typeparam><typeparam name="TArg6">Sixth argument that should be passed to the factory delegate to create the instace.</typeparam><param name="factory">The factory delegate to initialize new instances of the service when needed.</param><returns>The registration object to perform further configuration via its fluent interface.</returns>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.Register``1(System.String,System.Func{HSFrameWork.Funq.FunqContainer,``0})">
+            <summary>
+			Registers the given named service by providing a factory delegate to
+			instantiate it.
+		</summary><typeparam name="TService">The service type to register.</typeparam><param name="name">A name used to differenciate this service registration.</param><param name="factory">The factory delegate to initialize new instances of the service when needed.</param><returns>The registration object to perform further configuration via its fluent interface.</returns>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.Register``2(System.String,System.Func{HSFrameWork.Funq.FunqContainer,``1,``0})">
+            <summary>
+			Registers the given named service by providing a factory delegate that receives arguments to
+			instantiate it.
+		</summary><typeparam name="TService">The service type to register.</typeparam><typeparam name="TArg">First argument that should be passed to the factory delegate to create the instace.</typeparam><param name="name">A name used to differenciate this service registration.</param><param name="factory">The factory delegate to initialize new instances of the service when needed.</param><returns>The registration object to perform further configuration via its fluent interface.</returns>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.Register``3(System.String,System.Func{HSFrameWork.Funq.FunqContainer,``1,``2,``0})">
+            <summary>
+			Registers the given named service by providing a factory delegate that receives arguments to
+			instantiate it.
+		</summary><typeparam name="TService">The service type to register.</typeparam><typeparam name="TArg1">First argument that should be passed to the factory delegate to create the instace.</typeparam><typeparam name="TArg2">Second argument that should be passed to the factory delegate to create the instace.</typeparam><param name="name">A name used to differenciate this service registration.</param><param name="factory">The factory delegate to initialize new instances of the service when needed.</param><returns>The registration object to perform further configuration via its fluent interface.</returns>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.Register``4(System.String,System.Func{HSFrameWork.Funq.FunqContainer,``1,``2,``3,``0})">
+            <summary>
+			Registers the given named service by providing a factory delegate that receives arguments to
+			instantiate it.
+		</summary><typeparam name="TService">The service type to register.</typeparam><typeparam name="TArg1">First argument that should be passed to the factory delegate to create the instace.</typeparam><typeparam name="TArg2">Second argument that should be passed to the factory delegate to create the instace.</typeparam><typeparam name="TArg3">Third argument that should be passed to the factory delegate to create the instace.</typeparam><param name="name">A name used to differenciate this service registration.</param><param name="factory">The factory delegate to initialize new instances of the service when needed.</param><returns>The registration object to perform further configuration via its fluent interface.</returns>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.Register``5(System.String,HSFrameWork.Funq.Func{HSFrameWork.Funq.FunqContainer,``1,``2,``3,``4,``0})">
+            <summary>
+			Registers the given named service by providing a factory delegate that receives arguments to
+			instantiate it.
+		</summary><typeparam name="TService">The service type to register.</typeparam><typeparam name="TArg1">First argument that should be passed to the factory delegate to create the instace.</typeparam><typeparam name="TArg2">Second argument that should be passed to the factory delegate to create the instace.</typeparam><typeparam name="TArg3">Third argument that should be passed to the factory delegate to create the instace.</typeparam><typeparam name="TArg4">Fourth argument that should be passed to the factory delegate to create the instace.</typeparam><param name="name">A name used to differenciate this service registration.</param><param name="factory">The factory delegate to initialize new instances of the service when needed.</param><returns>The registration object to perform further configuration via its fluent interface.</returns>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.Register``6(System.String,HSFrameWork.Funq.Func{HSFrameWork.Funq.FunqContainer,``1,``2,``3,``4,``5,``0})">
+            <summary>
+			Registers the given named service by providing a factory delegate that receives arguments to
+			instantiate it.
+		</summary><typeparam name="TService">The service type to register.</typeparam><typeparam name="TArg1">First argument that should be passed to the factory delegate to create the instace.</typeparam><typeparam name="TArg2">Second argument that should be passed to the factory delegate to create the instace.</typeparam><typeparam name="TArg3">Third argument that should be passed to the factory delegate to create the instace.</typeparam><typeparam name="TArg4">Fourth argument that should be passed to the factory delegate to create the instace.</typeparam><typeparam name="TArg5">Fifth argument that should be passed to the factory delegate to create the instace.</typeparam><param name="name">A name used to differenciate this service registration.</param><param name="factory">The factory delegate to initialize new instances of the service when needed.</param><returns>The registration object to perform further configuration via its fluent interface.</returns>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.Register``7(System.String,HSFrameWork.Funq.Func{HSFrameWork.Funq.FunqContainer,``1,``2,``3,``4,``5,``6,``0})">
+            <summary>
+			Registers the given named service by providing a factory delegate that receives arguments to
+			instantiate it.
+		</summary><typeparam name="TService">The service type to register.</typeparam><typeparam name="TArg1">First argument that should be passed to the factory delegate to create the instace.</typeparam><typeparam name="TArg2">Second argument that should be passed to the factory delegate to create the instace.</typeparam><typeparam name="TArg3">Third argument that should be passed to the factory delegate to create the instace.</typeparam><typeparam name="TArg4">Fourth argument that should be passed to the factory delegate to create the instace.</typeparam><typeparam name="TArg5">Fifth argument that should be passed to the factory delegate to create the instace.</typeparam><typeparam name="TArg6">Sixth argument that should be passed to the factory delegate to create the instace.</typeparam><param name="name">A name used to differenciate this service registration.</param><param name="factory">The factory delegate to initialize new instances of the service when needed.</param><returns>The registration object to perform further configuration via its fluent interface.</returns>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.Resolve``1">
+            <summary>
+			Resolves the given service by type, without passing any arguments for
+			its construction.
+		</summary><typeparam name="TService">Type of the service to retrieve.</typeparam><returns>The resolved service instance.</returns><exception cref="T:HSFrameWork.Funq.ResolutionException">The given service could not be resolved.</exception>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.Resolve``2(``1)">
+            <summary>
+			Resolves the given service by type, passing the given arguments
+			for its initialization.
+		</summary><typeparam name="TService">Type of the service to retrieve.</typeparam><typeparam name="TArg">First argument to pass to the factory delegate that may create the instace.</typeparam><returns>The resolved service instance.</returns><exception cref="T:HSFrameWork.Funq.ResolutionException">The given service could not be resolved.</exception>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.Resolve``3(``1,``2)">
+            <summary>
+			Resolves the given service by type, passing the given arguments
+			for its initialization.
+		</summary><typeparam name="TService">Type of the service to retrieve.</typeparam><typeparam name="TArg1">First argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg2">Second argument to pass to the factory delegate that may create the instace.</typeparam><returns>The resolved service instance.</returns><exception cref="T:HSFrameWork.Funq.ResolutionException">The given service could not be resolved.</exception>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.Resolve``4(``1,``2,``3)">
+            <summary>
+			Resolves the given service by type, passing the given arguments
+			for its initialization.
+		</summary><typeparam name="TService">Type of the service to retrieve.</typeparam><typeparam name="TArg1">First argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg2">Second argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg3">Third argument to pass to the factory delegate that may create the instace.</typeparam><returns>The resolved service instance.</returns><exception cref="T:HSFrameWork.Funq.ResolutionException">The given service could not be resolved.</exception>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.Resolve``5(``1,``2,``3,``4)">
+            <summary>
+			Resolves the given service by type, passing the given arguments
+			for its initialization.
+		</summary><typeparam name="TService">Type of the service to retrieve.</typeparam><typeparam name="TArg1">First argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg2">Second argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg3">Third argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg4">Fourth argument to pass to the factory delegate that may create the instace.</typeparam><returns>The resolved service instance.</returns><exception cref="T:HSFrameWork.Funq.ResolutionException">The given service could not be resolved.</exception>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.Resolve``6(``1,``2,``3,``4,``5)">
+            <summary>
+			Resolves the given service by type, passing the given arguments
+			for its initialization.
+		</summary><typeparam name="TService">Type of the service to retrieve.</typeparam><typeparam name="TArg1">First argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg2">Second argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg3">Third argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg4">Fourth argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg5">Fifth argument to pass to the factory delegate that may create the instace.</typeparam><returns>The resolved service instance.</returns><exception cref="T:HSFrameWork.Funq.ResolutionException">The given service could not be resolved.</exception>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.Resolve``7(``1,``2,``3,``4,``5,``6)">
+            <summary>
+			Resolves the given service by type, passing the given arguments
+			for its initialization.
+		</summary><typeparam name="TService">Type of the service to retrieve.</typeparam><typeparam name="TArg1">First argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg2">Second argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg3">Third argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg4">Fourth argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg5">Fifth argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg6">Sixth argument to pass to the factory delegate that may create the instace.</typeparam><returns>The resolved service instance.</returns><exception cref="T:HSFrameWork.Funq.ResolutionException">The given service could not be resolved.</exception>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.ResolveNamed``1(System.String)">
+            <summary>
+			Resolves the given service by type and name, without passing arguments for its initialization.
+		</summary><typeparam name="TService">Type of the service to retrieve.</typeparam><returns>The resolved service instance.</returns><exception cref="T:HSFrameWork.Funq.ResolutionException">The given service could not be resolved.</exception>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.ResolveNamed``2(System.String,``1)">
+            <summary>
+			Resolves the given service by type and name, passing the given arguments
+			for its initialization.
+		</summary><typeparam name="TService">Type of the service to retrieve.</typeparam><typeparam name="TArg">First argument to pass to the factory delegate that may create the instace.</typeparam><returns>The resolved service instance.</returns><exception cref="T:HSFrameWork.Funq.ResolutionException">The given service could not be resolved.</exception>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.ResolveNamed``3(System.String,``1,``2)">
+            <summary>
+			Resolves the given service by type and name, passing the given arguments
+			for its initialization.
+		</summary><typeparam name="TService">Type of the service to retrieve.</typeparam><typeparam name="TArg1">First argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg2">Second argument to pass to the factory delegate that may create the instace.</typeparam><returns>The resolved service instance.</returns><exception cref="T:HSFrameWork.Funq.ResolutionException">The given service could not be resolved.</exception>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.ResolveNamed``4(System.String,``1,``2,``3)">
+            <summary>
+			Resolves the given service by type and name, passing the given arguments
+			for its initialization.
+		</summary><typeparam name="TService">Type of the service to retrieve.</typeparam><typeparam name="TArg1">First argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg2">Second argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg3">Third argument to pass to the factory delegate that may create the instace.</typeparam><returns>The resolved service instance.</returns><exception cref="T:HSFrameWork.Funq.ResolutionException">The given service could not be resolved.</exception>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.ResolveNamed``5(System.String,``1,``2,``3,``4)">
+            <summary>
+			Resolves the given service by type and name, passing the given arguments
+			for its initialization.
+		</summary><typeparam name="TService">Type of the service to retrieve.</typeparam><typeparam name="TArg1">First argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg2">Second argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg3">Third argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg4">Fourth argument to pass to the factory delegate that may create the instace.</typeparam><returns>The resolved service instance.</returns><exception cref="T:HSFrameWork.Funq.ResolutionException">The given service could not be resolved.</exception>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.ResolveNamed``6(System.String,``1,``2,``3,``4,``5)">
+            <summary>
+			Resolves the given service by type and name, passing the given arguments
+			for its initialization.
+		</summary><typeparam name="TService">Type of the service to retrieve.</typeparam><typeparam name="TArg1">First argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg2">Second argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg3">Third argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg4">Fourth argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg5">Fifth argument to pass to the factory delegate that may create the instace.</typeparam><returns>The resolved service instance.</returns><exception cref="T:HSFrameWork.Funq.ResolutionException">The given service could not be resolved.</exception>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.ResolveNamed``7(System.String,``1,``2,``3,``4,``5,``6)">
+            <summary>
+			Resolves the given service by type and name, passing the given arguments
+			for its initialization.
+		</summary><typeparam name="TService">Type of the service to retrieve.</typeparam><typeparam name="TArg1">First argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg2">Second argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg3">Third argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg4">Fourth argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg5">Fifth argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg6">Sixth argument to pass to the factory delegate that may create the instace.</typeparam><returns>The resolved service instance.</returns><exception cref="T:HSFrameWork.Funq.ResolutionException">The given service could not be resolved.</exception>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.TryResolve``1">
+            <summary>
+			Attempts to resolve the given service by type, without passing arguments for its initialization.
+		</summary><typeparam name="TService">Type of the service to retrieve.</typeparam><returns>
+			The resolved service instance or <see langword="null" /> if it cannot be resolved.
+		</returns>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.TryResolve``2(``1)">
+            <summary>
+			Attempts to resolve the given service by type, passing the
+			given arguments arguments for its initialization.
+		</summary><typeparam name="TService">Type of the service to retrieve.</typeparam><typeparam name="TArg">First argument to pass to the factory delegate that may create the instace.</typeparam><returns>
+			The resolved service instance or <see langword="null" /> if it cannot be resolved.
+		</returns>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.TryResolve``3(``1,``2)">
+            <summary>
+			Attempts to resolve the given service by type, passing the
+			given arguments arguments for its initialization.
+		</summary><typeparam name="TService">Type of the service to retrieve.</typeparam><typeparam name="TArg1">First argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg2">Second argument to pass to the factory delegate that may create the instace.</typeparam><returns>
+			The resolved service instance or <see langword="null" /> if it cannot be resolved.
+		</returns>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.TryResolve``4(``1,``2,``3)">
+            <summary>
+			Attempts to resolve the given service by type, passing the
+			given arguments arguments for its initialization.
+		</summary><typeparam name="TService">Type of the service to retrieve.</typeparam><typeparam name="TArg1">First argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg2">Second argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg3">Third argument to pass to the factory delegate that may create the instace.</typeparam><returns>
+			The resolved service instance or <see langword="null" /> if it cannot be resolved.
+		</returns>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.TryResolve``5(``1,``2,``3,``4)">
+            <summary>
+			Attempts to resolve the given service by type, passing the
+			given arguments arguments for its initialization.
+		</summary><typeparam name="TService">Type of the service to retrieve.</typeparam><typeparam name="TArg1">First argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg2">Second argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg3">Third argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg4">Fourth argument to pass to the factory delegate that may create the instace.</typeparam><returns>
+			The resolved service instance or <see langword="null" /> if it cannot be resolved.
+		</returns>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.TryResolve``6(``1,``2,``3,``4,``5)">
+            <summary>
+			Attempts to resolve the given service by type, passing the
+			given arguments arguments for its initialization.
+		</summary><typeparam name="TService">Type of the service to retrieve.</typeparam><typeparam name="TArg1">First argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg2">Second argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg3">Third argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg4">Fourth argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg5">Fifth argument to pass to the factory delegate that may create the instace.</typeparam><returns>
+			The resolved service instance or <see langword="null" /> if it cannot be resolved.
+		</returns>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.TryResolve``7(``1,``2,``3,``4,``5,``6)">
+            <summary>
+			Attempts to resolve the given service by type, passing the
+			given arguments arguments for its initialization.
+		</summary><typeparam name="TService">Type of the service to retrieve.</typeparam><typeparam name="TArg1">First argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg2">Second argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg3">Third argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg4">Fourth argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg5">Fifth argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg6">Sixth argument to pass to the factory delegate that may create the instace.</typeparam><returns>
+			The resolved service instance or <see langword="null" /> if it cannot be resolved.
+		</returns>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.TryResolveNamed``1(System.String)">
+            <summary>
+			Attempts to resolve the given service by type and name, without passing
+			arguments arguments for its initialization.
+		</summary><typeparam name="TService">Type of the service to retrieve.</typeparam><returns>
+			The resolved service instance or <see langword="null" /> if it cannot be resolved.
+		</returns>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.TryResolveNamed``2(System.String,``1)">
+            <summary>
+			Attempts to resolve the given service by type and name, passing the
+			given arguments arguments for its initialization.
+		</summary><typeparam name="TService">Type of the service to retrieve.</typeparam><typeparam name="TArg">First argument to pass to the factory delegate that may create the instace.</typeparam><returns>
+			The resolved service instance or <see langword="null" /> if it cannot be resolved.
+		</returns>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.TryResolveNamed``3(System.String,``1,``2)">
+            <summary>
+			Attempts to resolve the given service by type and name, passing the
+			given arguments arguments for its initialization.
+		</summary><typeparam name="TService">Type of the service to retrieve.</typeparam><typeparam name="TArg1">First argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg2">Second argument to pass to the factory delegate that may create the instace.</typeparam><returns>
+			The resolved service instance or <see langword="null" /> if it cannot be resolved.
+		</returns>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.TryResolveNamed``4(System.String,``1,``2,``3)">
+            <summary>
+			Attempts to resolve the given service by type and name, passing the
+			given arguments arguments for its initialization.
+		</summary><typeparam name="TService">Type of the service to retrieve.</typeparam><typeparam name="TArg1">First argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg2">Second argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg3">Third argument to pass to the factory delegate that may create the instace.</typeparam><returns>
+			The resolved service instance or <see langword="null" /> if it cannot be resolved.
+		</returns>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.TryResolveNamed``5(System.String,``1,``2,``3,``4)">
+            <summary>
+			Attempts to resolve the given service by type and name, passing the
+			given arguments arguments for its initialization.
+		</summary><typeparam name="TService">Type of the service to retrieve.</typeparam><typeparam name="TArg1">First argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg2">Second argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg3">Third argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg4">Fourth argument to pass to the factory delegate that may create the instace.</typeparam><returns>
+			The resolved service instance or <see langword="null" /> if it cannot be resolved.
+		</returns>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.TryResolveNamed``6(System.String,``1,``2,``3,``4,``5)">
+            <summary>
+			Attempts to resolve the given service by type and name, passing the
+			given arguments arguments for its initialization.
+		</summary><typeparam name="TService">Type of the service to retrieve.</typeparam><typeparam name="TArg1">First argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg2">Second argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg3">Third argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg4">Fourth argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg5">Fifth argument to pass to the factory delegate that may create the instace.</typeparam><returns>
+			The resolved service instance or <see langword="null" /> if it cannot be resolved.
+		</returns>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqContainer.TryResolveNamed``7(System.String,``1,``2,``3,``4,``5,``6)">
+            <summary>
+			Attempts to resolve the given service by type and name, passing the
+			given arguments arguments for its initialization.
+		</summary><typeparam name="TService">Type of the service to retrieve.</typeparam><typeparam name="TArg1">First argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg2">Second argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg3">Third argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg4">Fourth argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg5">Fifth argument to pass to the factory delegate that may create the instace.</typeparam><typeparam name="TArg6">Sixth argument to pass to the factory delegate that may create the instace.</typeparam><returns>
+			The resolved service instance or <see langword="null" /> if it cannot be resolved.
+		</returns>
+        </member>
+        <member name="T:HSFrameWork.Funq.Func`6">
+            <summary>
+            Encapsulates a method that has five parameters and returns a value of the 
+             type specified by the <typeparamref name="TResult"/> parameter.
+            </summary>
+        </member>
+        <member name="T:HSFrameWork.Funq.Func`7">
+            <summary>
+            Encapsulates a method that has six parameters and returns a value of the 
+             type specified by the <typeparamref name="TResult"/> parameter.
+            </summary>
+        </member>
+        <member name="T:HSFrameWork.Funq.Func`8">
+            <summary>
+            Encapsulates a method that has seven parameters and returns a value of the 
+             type specified by the <typeparamref name="TResult"/> parameter.
+            </summary>
+        </member>
+        <member name="T:HSFrameWork.Funq.FunqResources">
+            <summary>
+            Strongly typed resource wrappers generated from FunqResources.strings.
+            </summary>
+        </member>
+        <member name="F:HSFrameWork.Funq.FunqResources.Registration_CantRegisterContainer">
+            <summary>
+            Container service is built-in and read-only.
+            </summary>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqResources.Registration_IncompatibleAsType(System.Object,System.Object)">
+            <summary>
+            Service type {0} does not inherit or implement {1}.
+            </summary>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqResources.ResolutionException_MissingNamedType(System.Object,System.Object)">
+            <summary>
+            Required dependency of type {0} named '{1}' could not be resolved.
+            </summary>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqResources.ResolutionException_MissingType(System.Object)">
+            <summary>
+            Required dependency of type {0} could not be resolved.
+            </summary>
+        </member>
+        <member name="P:HSFrameWork.Funq.FunqResources.ResolutionException_UnknownScope">
+            <summary>
+            Unknown scope.
+            </summary>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqResources.ResolutionException_Autowired(System.Object)">
+            <summary>
+            Error trying to resolve Service '{0}' or one of its autowired dependencies (see inner exception for details).
+            </summary>
+        </member>
+        <member name="M:HSFrameWork.Funq.FunqResources.ResolutionException_Adapter(System.Object,System.Object,System.Object)">
+            <summary>
+            Error trying to resolve Service '{0}' from Adapter '{1}': {2}
+            </summary>
+        </member>
+        <member name="T:HSFrameWork.Funq.IContainerAdapter">
+            <summary>
+            Allow delegation of dependencies to other IOC's
+            </summary>
+        </member>
+        <member name="M:HSFrameWork.Funq.IContainerAdapter.Resolve``1">
+            <summary>
+            Resolve Constructor Dependency
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="T:HSFrameWork.Funq.IFluentInterface">
+            <summary>
+            Helper interface used to hide the base <see cref="T:System.Object"/> 
+            members from the fluent API to make for much cleaner 
+            Visual Studio intellisense experience.
+            </summary>
+        </member>
+        <member name="M:HSFrameWork.Funq.IFluentInterface.GetType">
+            <summary/>
+        </member>
+        <member name="M:HSFrameWork.Funq.IFluentInterface.GetHashCode">
+            <summary/>
+        </member>
+        <member name="M:HSFrameWork.Funq.IFluentInterface.ToString">
+            <summary/>
+        </member>
+        <member name="M:HSFrameWork.Funq.IFluentInterface.Equals(System.Object)">
+            <summary/>
+        </member>
+        <member name="T:HSFrameWork.Funq.IFunqlet">
+            <summary>
+            Funqlets are a set of components provided as a package 
+            to an existing container (like a module).
+            </summary>
+        </member>
+        <member name="M:HSFrameWork.Funq.IFunqlet.Configure(HSFrameWork.Funq.FunqContainer)">
+            <summary>
+            Configure the given container with the 
+            registrations provided by the funqlet.
+            </summary>
+            <param name="container">Container to register.</param>
+        </member>
+        <member name="T:HSFrameWork.Funq.IContainerModule">
+            <summary>
+            Interface used by plugins to contribute registrations 
+            to an existing container.
+            </summary>
+        </member>
+        <member name="M:HSFrameWork.Funq.IResolver.TryResolve``1">
+            <summary>
+            Resolve a dependency from the container
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="T:HSFrameWork.Funq.Owner">
+            <summary>
+            Determines who is responsible for disposing instances 
+            registered with a container.
+            </summary>
+        </member>
+        <member name="F:HSFrameWork.Funq.Owner.Container">
+            <summary>
+            Container should dispose provided instances when it is disposed. This is the 
+            default.
+            </summary>
+        </member>
+        <member name="F:HSFrameWork.Funq.Owner.External">
+            <summary>
+            Container does not dispose provided instances.
+            </summary>
+        </member>
+        <member name="F:HSFrameWork.Funq.Owner.Default">
+            <summary>
+            Default owner, which equals <see cref="F:HSFrameWork.Funq.Owner.Container"/>.
+            </summary>
+        </member>
+        <member name="T:HSFrameWork.Funq.ResolutionException">
+            <summary>
+            Exception thrown by the container when a service cannot be resolved.
+            </summary>
+        </member>
+        <member name="M:HSFrameWork.Funq.ResolutionException.#ctor(System.Type)">
+            <summary>
+            Initializes the exception with the service that could not be resolved.
+            </summary>
+        </member>
+        <member name="M:HSFrameWork.Funq.ResolutionException.#ctor(System.Type,System.String)">
+            <summary>
+            Initializes the exception with the service (and its name) that could not be resolved.
+            </summary>
+        </member>
+        <member name="M:HSFrameWork.Funq.ResolutionException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes the exception with an arbitrary message and source exception.
+            </summary>
+        </member>
+        <member name="M:HSFrameWork.Funq.ResolutionException.#ctor(System.String)">
+            <summary>
+            Initializes the exception with an arbitrary message.
+            </summary>
+        </member>
+        <member name="T:HSFrameWork.Funq.FunqReuseScope">
+            <summary>
+            Determines visibility and reuse of instances provided by the container.
+            </summary>
+        </member>
+        <member name="F:HSFrameWork.Funq.FunqReuseScope.Hierarchy">
+            <summary>
+            Instances are reused within a container hierarchy. Instances 
+            are created (if necessary) in the container where the registration
+            was performed, and are reused by all descendent containers.
+            </summary>
+        </member>
+        <member name="F:HSFrameWork.Funq.FunqReuseScope.Container">
+            <summary>
+            Instances are reused only at the given container. Descendent 
+            containers do not reuse parent container instances and get  
+            a new instance at their level.
+            </summary>
+        </member>
+        <member name="F:HSFrameWork.Funq.FunqReuseScope.None">
+            <summary>
+            Each request to resolve the dependency will result in a new 
+            instance being returned.
+            </summary>
+        </member>
+        <member name="F:HSFrameWork.Funq.FunqReuseScope.Default">
+            <summary>
+            Instaces are reused within the given request
+            </summary>
+        </member>
+        <member name="F:HSFrameWork.Funq.ServiceEntry.Owner">
+            <summary>
+            Ownership setting for the service.
+            </summary>
+        </member>
+        <member name="F:HSFrameWork.Funq.ServiceEntry.Reuse">
+            <summary>
+            Reuse scope setting for the service.
+            </summary>
+        </member>
+        <member name="F:HSFrameWork.Funq.ServiceEntry.Container">
+            <summary>
+            The container where the entry was registered.
+            </summary>
+        </member>
+        <member name="M:HSFrameWork.Funq.ServiceEntry.OwnedBy(HSFrameWork.Funq.Owner)">
+            <summary>
+            Specifies the owner for instances, which determines how 
+            they will be disposed.
+            </summary>
+        </member>
+        <member name="M:HSFrameWork.Funq.ServiceEntry.ReusedWithin(HSFrameWork.Funq.FunqReuseScope)">
+            <summary>
+            Specifies the scope for instances, which determines 
+            visibility of instances across containers and hierarchies.
+            </summary>
+        </member>
+        <member name="F:HSFrameWork.Funq.ServiceEntry`2.Factory">
+            <summary>
+            The Func delegate that creates instances of the service.
+            </summary>
+        </member>
+        <member name="F:HSFrameWork.Funq.ServiceEntry`2.instance">
+            <summary>
+            The cached service instance if the scope is <see cref="F:HSFrameWork.Funq.FunqReuseScope.Hierarchy"/> or 
+            <see cref="F:HSFrameWork.Funq.FunqReuseScope.Container"/>.
+            </summary>
+        </member>
+        <member name="F:HSFrameWork.Funq.ServiceEntry`2.Initializer">
+            <summary>
+            The Func delegate that initializes the object after creation.
+            </summary>
+        </member>
+        <member name="M:HSFrameWork.Funq.ServiceEntry`2.CloneFor(HSFrameWork.Funq.FunqContainer)">
+            <summary>
+            Clones the service entry assigning the <see cref="T:HSFrameWork.Funq.FunqContainer"/> to the 
+            <paramref name="newContainer"/>. Does not copy the <see cref="P:HSFrameWork.Funq.ServiceEntry`2.Instance"/>.
+            </summary>
+        </member>
+        <member name="T:HSFrameWork.Funq.IRegistration">
+            <summary>
+            Fluent API for customizing the registration of a service.
+            </summary>
+        </member>
+        <member name="T:HSFrameWork.Funq.IRegistration`1">
+            <summary>
+            Fluent API for customizing the registration of a service.
+            </summary>
+        </member>
+        <member name="T:HSFrameWork.Funq.IInitializable`1">
+            <summary>
+            Fluent API that allows registering an initializer for the 
+            service.
+            </summary>
+        </member>
+        <member name="M:HSFrameWork.Funq.IInitializable`1.InitializedBy(System.Action{HSFrameWork.Funq.FunqContainer,`0})">
+            <summary>
+            Specifies an initializer that should be invoked after 
+            the service instance has been created by the factory.
+            </summary>
+        </member>
+        <member name="T:HSFrameWork.Funq.IReusedOwned">
+            <summary>
+            Fluent API that exposes both <see cref="M:HSFrameWork.Funq.IReused.ReusedWithin(HSFrameWork.Funq.FunqReuseScope)"/>
+            and owner (<see cref="M:HSFrameWork.Funq.IOwned.OwnedBy(HSFrameWork.Funq.Owner)"/>).
+            </summary>
+        </member>
+        <member name="T:HSFrameWork.Funq.IReused">
+            <summary>
+            Fluent API that allows specifying the reuse instances.
+            </summary>
+        </member>
+        <member name="M:HSFrameWork.Funq.IReused.ReusedWithin(HSFrameWork.Funq.FunqReuseScope)">
+            <summary>
+            Specifies how instances are reused within a container or hierarchy. Default 
+            scope is <see cref="F:HSFrameWork.Funq.FunqReuseScope.Hierarchy"/>.
+            </summary>
+        </member>
+        <member name="T:HSFrameWork.Funq.IOwned">
+            <summary>
+            Fluent API that allows specifying the owner of instances 
+            created from a registration.
+            </summary>
+        </member>
+        <member name="M:HSFrameWork.Funq.IOwned.OwnedBy(HSFrameWork.Funq.Owner)">
+            <summary>
+            Specifies the owner of instances created from this registration. Default 
+            owner is <see cref="F:HSFrameWork.Funq.Owner.Container"/>.
+            </summary>
+        </member>
+    </members>
+</doc>

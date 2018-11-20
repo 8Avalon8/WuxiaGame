@@ -1,0 +1,13 @@
+{
+    "name": "HanSquirrel.Editor",
+    "references": [
+        "HanSquirrel.Crossplatform",
+        "HanSquirrel"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false
+}

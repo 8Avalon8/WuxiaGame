@@ -23,6 +23,7 @@ public class HSConfigTableInitHelperPhone : DefaultInitHelper
     protected override void BuildTypeNodes()
     {
         AddTypeNode<ResourceDTO>("resource");
+        AddTypeNode<SkillPojo>("skill");
     }
 
     protected HSConfigTableInitHelperPhone() { }
@@ -32,6 +33,7 @@ public class HSConfigTableInitHelperPhone : DefaultInitHelper
     protected static readonly List<Type> _SharedTypes = new List<Type>()
     {
         typeof(ResourceDTO),
+        typeof(SkillPojo),
     };
 
     private static List<Type> _ClientAllTypes;

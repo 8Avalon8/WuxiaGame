@@ -1,6 +1,10 @@
-﻿{
-	"name": "HanSquirrel.Crossplatform",
+{
+    "name": "HanSquirrel.Crossplatform",
     "references": [
         "HanSquirrel.3rd"
-    ]
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false
 }

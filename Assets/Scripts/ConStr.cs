@@ -3,11 +3,8 @@ using HanSquirrel.ResourceManager;
 using System.Collections.Generic;
 
 public class ConStr  {
-
-
     public const string NLogConfigAssetPath = "Assets/BuildSource/Configs/NLogDefault.xml";
     public const string GLOBAL_DESKEY = "eoidfjwhguireufcbdadr8232dsf";
-
     public static readonly HSLeanPoolConfig[] PrefabPoolConfig =
     {
 

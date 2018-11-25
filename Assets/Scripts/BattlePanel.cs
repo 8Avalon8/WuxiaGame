@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using HSFrameWork.ConfigTable;
+using HSFrameWork.Common;
 
 public class BattlePanel : MonoBehaviour
 {
@@ -45,6 +47,11 @@ public class BattlePanel : MonoBehaviour
         Clear(m_EnemyEnergyBarTrs);
         Clear(m_BallBar);
         Clear(m_EnemyBallBar);
+        var skills = ConfigTable.GetAll<SkillPojo>();
+        foreach (var skill in skills)
+        {
+            Debug.Log(skill.showname);
+        }
     }
     // Use this for initialization
     void Start()
@@ -67,7 +74,6 @@ public class BattlePanel : MonoBehaviour
         // 填充行动槽的球
         StartCoroutine(ShowBallsInActionBar(m_BallBarItemUI, m_BallBar, m_Player.BallPool, 9));
         StartCoroutine(ShowBallsInActionBar(m_EnemyBallBarItemUI, m_EnemyBallBar, m_Enemy.BallPool, 9));
-
         Refresh();
         BattleManager.Instance.StartRound();
     }

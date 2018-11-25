@@ -1,1 +1,2 @@
 JianghuX.ResourceDTO : 1186
+SkillPojo : 5

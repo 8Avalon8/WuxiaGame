@@ -1,0 +1,7 @@
+<root>
+  <skill key="基础拳法1" showname="基础拳法1" wuxue="基础拳法" cost="力:1,疾:1,御:1" type="拳法" damageratio="力:0.7" effect="" />
+  <skill key="基础掌法2" showname="基础掌法2" wuxue="基础拳法" cost="力:1,疾:2,御:1" type="拳法" damageratio="力:0.5,疾:0.5" effect="" />
+  <skill key="鞭腿" showname="鞭腿" wuxue="基础腿法" cost="力:1,疾:1" type="腿法" damageratio="力:0.6,御:0.5" effect="" />
+  <skill key="基础腿法2" showname="基础腿法2" wuxue="基础腿法" cost="力:1,疾:2" type="腿法" damageratio="疾:0.7" effect="" />
+  <skill key="寸拳" showname="寸拳" wuxue="咏春拳" cost="疾:2,御:1" type="拳法" damageratio="力:0.5" effect="" />
+</root>

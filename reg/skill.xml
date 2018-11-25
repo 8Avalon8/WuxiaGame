@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+	
+		<bean name="skill" from="J技能.xlsx" to="skill.xml">
+			<variable name="key" fromCol="关键字" type="string" />
+            <variable name="showname" fromCol="技能名" type="string" />
+			<variable name="wuxue" fromCol="所属武学" type="string"/>
+			<variable name="cost" fromCol="技能消耗" type="string"/>
+			<variable name="type" fromCol="技能类型" type="string"/>
+			<variable name="damageratio" fromCol="伤害加成" type="string"/>
+			<variable name="effect" fromCol="特效" type="string"/>
+		</bean>

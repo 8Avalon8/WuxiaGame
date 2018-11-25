@@ -4,10 +4,13 @@ using JianghuX;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class GameStatr : MonoBehaviour {
+public class StartGame : MonoBehaviour {
 
-
+    public Button m_BattleTestButton;
+    // Use this for initialization
     private void Awake()
     {
         HSBootApp.ColdBind(ConStr.GLOBAL_DESKEY, HSConfigTableInitHelperPhone.Create(), ConStr.PrefabPoolConfig);
@@ -25,5 +28,13 @@ public class GameStatr : MonoBehaviour {
         Debug.Log(res.Value);
         var skills = ConfigTable.Get<SkillPojo>("基础拳法1");
         Debug.Log(skills.Key);
+        m_BattleTestButton.onClick.AddListener(OnTestBattle);
     }
+
+    public void OnTestBattle()
+    {
+        SceneManager.LoadScene("BattleTest");
+    }
+
+
 }

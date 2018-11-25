@@ -1,13 +1,8 @@
 ﻿using UnityEngine;
 using UnityEditor;
-using System.Collections;
 using System.Collections.Generic;
-using JianghuX;
 using System.IO;
-using UnityEngine.UI;
-using System.Reflection;
 using HSFrameWork.Common;
-using HSUI;
 
 public class DebugTools : EditorWindow {
 	[MenuItem("Tools/[OPEN DEBUG PANEL]", false, 1)]

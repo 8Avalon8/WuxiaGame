@@ -14,14 +14,24 @@ public class SkillPojo : BasePojo
     public string showname;
     [XmlAttribute("wuxue")]
     public string wuxue;
-    [XmlAttribute("cost")]
-    public string cost;
+    [XmlAttribute("skillCost")]
+    public string skillCost;
+    [XmlAttribute("costMp")]
+    public int costMp;
+    [XmlAttribute("startCoolDown")]
+    public int startCoolDown;
+    [XmlAttribute("coolDown")]
+    public int coolDown;
     [XmlAttribute("type")]
     public string type;
-    [XmlAttribute("damageratio")]
+    [XmlAttribute("damageRatio")]
     public string damageRatio;
-    [XmlAttribute("effect")]
-    public string effect;
+    [XmlAttribute("enemyEffect")]
+    public string enemyEffect;
+    [XmlAttribute("ownSideEffect")]
+    public string ownSideEffect;
+    [XmlAttribute("ballAddingEffect")]
+    public string ballAddingEffect;
 
     public override void InitBind()
     {

@@ -1,2 +1,3 @@
+ActionBallPojo : 4
 JianghuX.ResourceDTO : 1186
-SkillPojo : 5
+SkillPojo : 6

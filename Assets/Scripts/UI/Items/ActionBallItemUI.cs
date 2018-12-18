@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using HSFrameWork;
+using HSFrameWork.ConfigTable;
+using HanSquirrel.ResourceManager;
 
 public class ActionBallItemUI : MonoBehaviour {
 
+    private const string IMAGE_PATH = "Assets/Resources/Icon/{0}.png";
+
     public Image m_Image;
-    public ActionBallType Type { get { return m_ActionBall.Type; } set { } }
+    public string Key { get { return m_ActionBall.Key; } set { } }
     public bool IsPreUsed { get; set; }
     public ActionBall m_ActionBall;
 
@@ -42,6 +47,13 @@ public class ActionBallItemUI : MonoBehaviour {
             });
             m_LoopFade.Kill(true);
         }
+    }
+
+    public void Bind(string key)
+    {
+        m_ActionBall = new ActionBall(key);
+        string iconstr = m_ActionBall.Pojo.iconstr;
+        m_Image.sprite = ResourceLoader.LoadAsset<Sprite>(string.Format(IMAGE_PATH, iconstr));
     }
 
 }

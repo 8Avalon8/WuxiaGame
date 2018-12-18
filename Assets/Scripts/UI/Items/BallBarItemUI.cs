@@ -27,14 +27,15 @@ public class BallBarItemUI : MonoBehaviour {
         m_ActionBallItemList.Add(item);
     }
 
-    public void StartFadeInAndOutBalls(Dictionary<ActionBall, int> costballs)
+    public void StartFadeInAndOutBalls(Dictionary<string, int> costballs)
     {
         List<ActionBallItemUI> costItemList = new List<ActionBallItemUI>();
         // 遍历字典判断是否包含可用球
-        foreach (KeyValuePair<ActionBall, int> kvp in costballs)
+        foreach (KeyValuePair<string, int> kvp in costballs)
         {
-            List<ActionBallItemUI> itemList = GetBallsByType(kvp.Key.Type);
-            if (GetCount(kvp.Key.Type) < kvp.Value)
+            List<ActionBallItemUI> itemList = GetBallsByName(kvp.Key);
+            // 如果没有对应的则返回
+            if (GetCount(kvp.Key) < kvp.Value)
                 return;
             costItemList.AddRange(itemList.Take(kvp.Value));
         }
@@ -48,6 +49,8 @@ public class BallBarItemUI : MonoBehaviour {
 
     public void StopFadeInAndOutBalls()
     {
+        // 如果没有对应的则返回
+        if (m_FadeInAndOutItemList == null) return;
         foreach (var item in m_FadeInAndOutItemList)
         {
             item.SetFadeInAndOut(false);
@@ -59,14 +62,14 @@ public class BallBarItemUI : MonoBehaviour {
     /// </summary>
     /// <param name="costballs">需要消耗的球的类型和数量</param>
     /// <returns></returns>
-    public bool PrepareCostBalls(Dictionary<ActionBall, int> costballs)
+    public bool PrepareCostBalls(Dictionary<string, int> costballs)
     {
         List<ActionBallItemUI> costItemList = new List<ActionBallItemUI>();
         // 遍历字典判断是否包含可用球
-        foreach (KeyValuePair<ActionBall, int> kvp in costballs)
+        foreach (KeyValuePair<string, int> kvp in costballs)
         {
-            List<ActionBallItemUI> itemList = GetBallsByType(kvp.Key.Type);
-            if (GetCount(kvp.Key.Type) < kvp.Value)
+            List<ActionBallItemUI> itemList = GetBallsByName(kvp.Key);
+            if (GetCount(kvp.Key) < kvp.Value)
                 return false;
             costItemList.AddRange(itemList.Take(kvp.Value));
         }
@@ -78,9 +81,9 @@ public class BallBarItemUI : MonoBehaviour {
         return true;
     }
 
-    private List<ActionBallItemUI> GetBallsByType(ActionBallType type)
+    private List<ActionBallItemUI> GetBallsByName(string key)
     {
-        var rst_List = m_ActionBallItemList.FindAll((ActionBallItemUI) => ActionBallItemUI.Type == type && !ActionBallItemUI.IsPreUsed);
+        var rst_List = m_ActionBallItemList.FindAll((ActionBallItemUI) => ActionBallItemUI.Key == key && !ActionBallItemUI.IsPreUsed);
         rst_List.Reverse();
         return rst_List;
     }
@@ -88,10 +91,10 @@ public class BallBarItemUI : MonoBehaviour {
     /// <summary>
     /// 获取未被使用的一种类型的球的数量
     /// </summary>
-    /// <param name="type"></param>
+    /// <param name="key"></param>
     /// <returns></returns>
-    private int GetCount(ActionBallType type)
+    private int GetCount(string key)
     {
-        return m_ActionBallItemList.FindAll((ActionBallItemUI) => ActionBallItemUI.Type == type && !ActionBallItemUI.IsPreUsed).Count;
+        return m_ActionBallItemList.FindAll((ActionBallItemUI) => ActionBallItemUI.Key == key && !ActionBallItemUI.IsPreUsed).Count;
     }
 }

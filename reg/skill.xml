@@ -5,8 +5,13 @@
 			<variable name="key" fromCol="关键字" type="string" />
             <variable name="showname" fromCol="技能名" type="string" />
 			<variable name="wuxue" fromCol="所属武学" type="string"/>
-			<variable name="cost" fromCol="技能消耗" type="string"/>
+			<variable name="skillCost" fromCol="技能消耗" type="string"/>
+			<variable name="costMp" fromCol="耗内" type="int"/>
+			<variable name="startCoolDown" fromCol="开场冷却时间" type="int"/>
+			<variable name="coolDown" fromCol="施放冷却时间" type="int"/>
 			<variable name="type" fromCol="技能类型" type="string"/>
-			<variable name="damageratio" fromCol="伤害加成" type="string"/>
-			<variable name="effect" fromCol="特效" type="string"/>
+			<variable name="damageRatio" fromCol="伤害加成" type="string"/>
+			<variable name="enemyEffect" fromCol="敌方效果" type="string" defaultValue=""/>
+			<variable name="ownSideEffect" fromCol="己方效果" type="string" defaultValue=""/>
+			<variable name="ballAddingEffect" fromCol="球加成" type="string" defaultValue=""/>
 		</bean>

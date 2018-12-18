@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+	
+		<bean name="actionball" from="X行动球.xlsx" to="actionball.xml">
+			<variable name="key" fromCol="关键字" type="string" />
+            <variable name="showname" fromCol="显示名" type="string" />
+			<variable name="index" fromCol="序号" type="int"/>
+			<variable name="iconstr" fromCol="Icon" type="string"/>
+			<variable name="costMp" fromCol="描述" type="string" defaultValue=""/>
+		</bean>

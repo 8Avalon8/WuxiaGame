@@ -17,7 +17,7 @@ public class ExcuteCommandLogic {
         //AdjustDefence();
         //GetCriticalProperty();
         //DoComputeFinalDamage();
-        Rst.Target.Hp -= attack;
+        Rst.Target.Hp = target.HP - attack;
     }
 
     public SkillResult Rst { get; set; }

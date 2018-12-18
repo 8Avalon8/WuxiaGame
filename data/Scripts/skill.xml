@@ -1,7 +1,8 @@
 <root>
-  <skill key="基础拳法1" showname="基础拳法1" wuxue="基础拳法" cost="力:1,疾:1,御:1" type="拳法" damageratio="力:0.7" effect="" />
-  <skill key="基础掌法2" showname="基础掌法2" wuxue="基础拳法" cost="力:1,疾:2,御:1" type="拳法" damageratio="力:0.5,疾:0.5" effect="" />
-  <skill key="鞭腿" showname="鞭腿" wuxue="基础腿法" cost="力:1,疾:1" type="腿法" damageratio="力:0.6,御:0.5" effect="" />
-  <skill key="基础腿法2" showname="基础腿法2" wuxue="基础腿法" cost="力:1,疾:2" type="腿法" damageratio="疾:0.7" effect="" />
-  <skill key="寸拳" showname="寸拳" wuxue="咏春拳" cost="疾:2,御:1" type="拳法" damageratio="力:0.5" effect="" />
+  <skill key="基础拳法1" showname="基础拳法1" wuxue="基础拳法" skillCost="力:1,疾:1,御:1" costMp="0" startCoolDown="0" coolDown="0" type="拳法" damageRatio="力:0.7" enemyEffect="" ballAddingEffect="力:5,疾:5" />
+  <skill key="基础掌法2" showname="基础掌法2" wuxue="基础拳法" skillCost="力:1,疾:2,御:1" costMp="1" startCoolDown="0" coolDown="0" type="拳法" damageRatio="力:0.5,疾:0.5" enemyEffect="" ballAddingEffect="力:3,疾:2" />
+  <skill key="鞭腿" showname="鞭腿" wuxue="基础腿法" skillCost="力:1,疾:1" costMp="1" startCoolDown="0" coolDown="0" type="腿法" damageRatio="力:0.6,御:0.5" enemyEffect="" ballAddingEffect="力:1,御:1" />
+  <skill key="基础腿法2" showname="基础腿法2" wuxue="基础腿法" skillCost="力:1,疾:2" costMp="2" startCoolDown="0" coolDown="0" type="腿法" damageRatio="疾:0.7" enemyEffect="" ballAddingEffect="力:3,疾:2" />
+  <skill key="寸拳" showname="寸拳" wuxue="咏春拳" skillCost="疾:2,御:1" costMp="2" startCoolDown="0" coolDown="0" type="拳法" damageRatio="力:0.5" enemyEffect="" ballAddingEffect="力:2,疾:3" />
+  <skill key="化骨绵掌" showname="化骨绵掌" wuxue="化骨绵掌" skillCost="疾:1,毒:1" costMp="2" startCoolDown="2" coolDown="1" type="心法" damageRatio="力:0.5,毒:0.5" enemyEffect="中毒.1.3.100" ballAddingEffect="力:5,毒:2" />
 </root>

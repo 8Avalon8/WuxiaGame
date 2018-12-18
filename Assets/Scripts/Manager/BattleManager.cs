@@ -80,10 +80,10 @@ public class BattleManager {
 
     public IEnumerable<SkillResult> StartComputing()
     {
-        foreach (var item in CommandSuequence)
+        foreach (var skill in CommandSuequence)
         {
-            Debug.Log(item.Name);
-            ExcuteCommandLogic commandLogic = new ExcuteCommandLogic(item,Player,Enemy);
+            Debug.Log(skill.Name);
+            ExcuteCommandLogic commandLogic = new ExcuteCommandLogic(skill,Player,Enemy);
             yield return commandLogic.Rst;
             //SetRoleStatus(commandLogic.Rst);
         }
@@ -133,121 +133,13 @@ public class BattleManager {
             EquipedXinfaSkill = new Skill(),
         };
         // 填充技能
-        Player.EquipedBaseSKills.Add(new Skill
-        {
-            Key = "基础攻击",
-            Name = "基础攻击",
-            CD = 0,
-            DamageWeight = 2,
-            DefenceWeight = 1,
-            HitWeight = 1,
-            DodgeWeight = 1,
-            CostBalls = new Dictionary<ActionBall, int>()
-            {
-                {new ActionBall(ActionBallType.Power),1 },
-            },
-            DamageRatio = new Skill.DamageRatioStruct
-            {
-                power_ratio = 1,
-                solid_ratio = 0,
-                quick_ratio = 1,
-            },
-        });
-        Player.EquipedBaseSKills.Add(new Skill
-        {
-            Key = "基础防御",
-            Name = "基础防御",
-            CD = 0,
-            DamageWeight = 1,
-            DefenceWeight = 2,
-            HitWeight = 1,
-            DodgeWeight = 1,
-            CostBalls = new Dictionary<ActionBall, int>()
-            {
-                {new ActionBall(ActionBallType.Block),1 },
-            }
-        });
-        Player.EquipedBaseSKills.Add(new Skill
-        {
-            Key = "基础闪避",
-            Name = "基础闪避",
-            CD = 0,
-            DamageWeight = 1,
-            DefenceWeight = 1,
-            HitWeight = 1,
-            DodgeWeight = 2,
-            CostBalls = new Dictionary<ActionBall, int>()
-            {
-                {new ActionBall(ActionBallType.Quick),1 },
-            }
-        });
-        Player.EquipedSpecialSkills.Add(new Skill
-        {
-            Key = "太极拳法",
-            Name = "太极拳法",
-            CD = 1,
-            DamageWeight = 5,
-            DefenceWeight = 1,
-            HitWeight = 1,
-            DodgeWeight = 1,
-            CostBalls = new Dictionary<ActionBall, int>()
-            {
-                {new ActionBall(ActionBallType.Quick),2 },
-                {new ActionBall(ActionBallType.Power),1 },
-            },
-            DamageRatio = new Skill.DamageRatioStruct
-            {
-                power_ratio = 2,
-                solid_ratio = 0,
-                quick_ratio = 1,
-            },
-        });
-        Player.EquipedSpecialSkills.Add(new Skill
-        {
-            Key = "凌波微步",
-            Name = "凌波微步",
-            CD = 2,
-            DamageWeight = 1,
-            DefenceWeight = 1,
-            HitWeight = 1,
-            DodgeWeight = 5,
-            CostBalls = new Dictionary<ActionBall, int>()
-            {
-                {new ActionBall(ActionBallType.Quick),3 },
-            }
-        });
-        Player.EquipedSpecialSkills.Add(new Skill
-        {
-            Key = "沾衣十八跌",
-            Name = "沾衣十八跌",
-            CD = 2,
-            DamageWeight = 1,
-            DefenceWeight = 5,
-            HitWeight = 1,
-            DodgeWeight = 5,
-            CostBalls = new Dictionary<ActionBall, int>()
-            {
-                {new ActionBall(ActionBallType.Quick),1 },
-                {new ActionBall(ActionBallType.Block),1 },
-                {new ActionBall(ActionBallType.Power),1 },
-            }
-        });
-        Player.EquipedXinfaSkill = new Skill
-        {
-            Key = "吸星大法",
-            Name = "吸星大法",
-            CD = 2,
-            DamageWeight = 1,
-            DefenceWeight = 5,
-            HitWeight = 1,
-            DodgeWeight = 5,
-            CostBalls = new Dictionary<ActionBall, int>()
-            {
-                {new ActionBall(ActionBallType.Quick),1 },
-                {new ActionBall(ActionBallType.Block),1 },
-                {new ActionBall(ActionBallType.Power),1 },
-            }
-        };
+        Player.EquipedBaseSKills.Add(new Skill("基础拳法1"));
+        Player.EquipedBaseSKills.Add(new Skill("基础掌法2"));
+        Player.EquipedBaseSKills.Add(new Skill("鞭腿"));
+        Player.EquipedSpecialSkills.Add(new Skill("基础腿法2"));
+        Player.EquipedSpecialSkills.Add(new Skill("寸拳"));
+        Player.EquipedSpecialSkills.Add(new Skill("化骨绵掌"));
+        Player.EquipedXinfaSkill = new Skill("化骨绵掌");
         Player.GenerateBallPool();
         Enemy = new Role
         {
@@ -265,13 +157,13 @@ public class BattleManager {
             EquipedXinfaSkill = new Skill(),
         };
         // 填充技能
-        Enemy.EquipedBaseSKills.Add(new Skill("基础攻击", "基础攻击", 0));
-        Enemy.EquipedBaseSKills.Add(new Skill("基础防御", "基础防御", 0));
-        Enemy.EquipedBaseSKills.Add(new Skill("基础闪避", "基础闪避", 0));
-        Enemy.EquipedSpecialSkills.Add(new Skill("太极拳法", "太极拳法", 1));
-        Enemy.EquipedSpecialSkills.Add(new Skill("凌波微步", "凌波微步", 2));
-        Enemy.EquipedSpecialSkills.Add(new Skill("沾衣十八跌", "沾衣十八跌", 1));
-        Enemy.EquipedXinfaSkill = new Skill("吸星大法", "吸星大法", 3);
+        Enemy.EquipedBaseSKills.Add(new Skill("基础拳法1"));
+        Enemy.EquipedBaseSKills.Add(new Skill("基础掌法2"));
+        Enemy.EquipedBaseSKills.Add(new Skill("鞭腿"));
+        Enemy.EquipedSpecialSkills.Add(new Skill("基础腿法2"));
+        Enemy.EquipedSpecialSkills.Add(new Skill("寸拳"));
+        Enemy.EquipedSpecialSkills.Add(new Skill("化骨绵掌"));
+        Enemy.EquipedXinfaSkill = new Skill("化骨绵掌");
         Enemy.GenerateBallPool();
 
     }

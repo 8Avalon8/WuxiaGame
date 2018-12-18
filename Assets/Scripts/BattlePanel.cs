@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using HSFrameWork.ConfigTable;
 using HSFrameWork.Common;
+using HanSquirrel;
+using HanSquirrel.ResourceManager;
 
 public class BattlePanel : MonoBehaviour
 {
@@ -164,10 +166,10 @@ public class BattlePanel : MonoBehaviour
     void OnSKillButtonEnter(Skill skill)
     {
         m_BallBarItemUI.StartFadeInAndOutBalls(skill.CostBalls);
-        foreach (KeyValuePair<ActionBall, int> kvp in skill.CostBalls)
+        foreach (KeyValuePair<string, int> kvp in skill.CostBalls)
         {
             if (kvp.Value > 0)
-                Debug.Log(kvp.Key.Type + kvp.Value.ToString());
+                Debug.Log(kvp.Key + kvp.Value.ToString());
         }
     }
 
@@ -216,27 +218,8 @@ public class BattlePanel : MonoBehaviour
     {
         for (int i = 0; i < count; i++)
         {
-            GameObject ball;
-            if (ballpool[i].Type == ActionBallType.Power)
-            {
-                ball = Instantiate(LiBallObj);
-                ball.GetComponent<ActionBallItemUI>().m_ActionBall = new ActionBall(ActionBallType.Power);
-            }
-            else if (ballpool[i].Type == ActionBallType.Quick)
-            {
-                ball = Instantiate(XunBallObj);
-                ball.GetComponent<ActionBallItemUI>().m_ActionBall = new ActionBall(ActionBallType.Quick);
-            }
-            else if (ballpool[i].Type == ActionBallType.Block)
-            {
-                ball = Instantiate(QiBallObj);
-                ball.GetComponent<ActionBallItemUI>().m_ActionBall = new ActionBall(ActionBallType.Block);
-            }
-            else
-            {
-                ball = Instantiate(QiBallObj);
-                ball.GetComponent<ActionBallItemUI>().m_ActionBall = new ActionBall(ActionBallType.Block);
-            }
+            GameObject ball = ResourceLoader.CreatePrefabInstance(ConStr.ActionBall);
+            ball.GetComponent<ActionBallItemUI>().Bind(ballpool[i].Key);
             ball.transform.SetParent(balltrs, false);
             // 加入m_BallBarItemUI
             baritem.Add(ball.GetComponent<ActionBallItemUI>());

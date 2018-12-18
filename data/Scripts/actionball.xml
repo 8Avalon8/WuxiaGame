@@ -1,0 +1,6 @@
+<root>
+  <actionball key="力" showname="力" index="1" iconstr="PowerBall" costMp="力气" />
+  <actionball key="疾" showname="疾" index="2" iconstr="QuickBall" costMp="面对疾风吧Hasage" />
+  <actionball key="御" showname="御" index="3" iconstr="DefenceBall" costMp="硬的一匹" />
+  <actionball key="毒" showname="毒" index="4" iconstr="PoisonBall" costMp="我快要窒息了" />
+</root>

@@ -7,9 +7,14 @@ public class ConStr  {
     public const string GLOBAL_DESKEY = "eoidfjwhguireufcbdadr8232dsf";
     public static readonly HSLeanPoolConfig[] PrefabPoolConfig =
     {
-
+        new HSLeanPoolConfig(ActionBall,0,0,NotificationTypeLP.None),
     };
 
+    #region 预知路径
+
+    public const string ActionBall = "Assets/Prefabs/ActionBall.prefab";
+
+    #endregion
 
     #region AB打包配置
     public static readonly string[] PrefabSearchPaths = new string[]

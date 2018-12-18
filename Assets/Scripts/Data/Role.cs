@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using HSFrameWork;
+using HSFrameWork.ConfigTable;
 
 public class Role {
 
@@ -13,6 +15,8 @@ public class Role {
     public int Power { get; set; }
     public int Solid { get; set; }
     public int Quick { get; set; }
+
+    public int Poison { get; set; }
 
     public List<ActionBall> BallPool
     {
@@ -32,7 +36,7 @@ public class Role {
     public Skill EquipedXinfaSkill { get; set; }
 
     private List<ActionBall> _ballPool;
-    
+    private Dictionary<string, List<Trigger>> _triggersMap = new Dictionary<string, List<Trigger>>();
     /// <summary>
     /// 根据规则生成行动池
     /// </summary>
@@ -43,27 +47,30 @@ public class Role {
         // 另外一种设计是固定数量根据概率分配
         // Test 各放十个球
         List<ActionBall> tempPool = new List<ActionBall>();
-        for (int i = 0; i < 10; i++)
+        // Skill提供的球
+        foreach (var skill in EquipedBaseSKills)
         {
-            tempPool.Add(new ActionBall(ActionBallType.Power));
-        }
-        for (int i = 0; i < 10; i++)
-        {
-            tempPool.Add(new ActionBall(ActionBallType.Block));
-        }
-        for (int i = 0; i < 10; i++)
-        {
-            tempPool.Add(new ActionBall(ActionBallType.Quick));
+            foreach (var balls in skill.AddingBalls)
+            {
+                for (int i = 0; i < balls.Value; i++)
+                {
+                    ActionBall ball = new ActionBall(balls.Key);
+                    tempPool.Add(ball);
+                }
+            }
         }
         _ballPool = Tools.RandomSortList(tempPool);
     }
 
     public int GetAttack(Skill skill)
     {
-        float pow_ratio = skill.DamageRatio.power_ratio;
-        float quick_ratio = skill.DamageRatio.quick_ratio;
-        float solid_ratio = skill.DamageRatio.solid_ratio;
-        float attack = Power * pow_ratio + Quick * quick_ratio + Solid * solid_ratio;
+        float attack = 0f;
+        foreach (var ratio in skill.DamageRatio)
+        {
+            int index = ConfigTable.Get<ActionBallPojo>(ratio.Key).index;
+            // 对应的球加成 * 角色对应属性
+            attack += GetAttributeFromActionBallIndex((ActionBallType)index) * ratio.Value;
+        }
         return Convert.ToInt32(Math.Ceiling(attack));
     }
 
@@ -100,6 +107,47 @@ public class Role {
         int critical = 0;
         critical += Power * 1;
         return critical;
+    }
+
+    /// <summary>
+    /// 刷新人物身上的trigger
+    /// </summary>
+    /// <returns></returns>
+    public void RefreshTrigger()
+    {
+        _triggersMap.Clear();
+
+    }
+
+    private void AddTriggerMap (Trigger trigger)
+    {
+        if (_triggersMap.ContainsKey(trigger.Name))
+        {
+            _triggersMap[trigger.Name].Add(trigger);
+        }
+        else
+        {
+            List<Trigger> tmp = new List<Trigger>() { trigger };
+            _triggersMap.Add(trigger.Name, tmp);
+        }
+    }
+
+    private int GetAttributeFromActionBallIndex(ActionBallType index)
+    {
+        switch (index)
+        {
+            case ActionBallType.Power:
+                return Power;
+            case ActionBallType.Quick:
+                return Power;
+            case ActionBallType.Block:
+                return Power;
+            case ActionBallType.Posion:
+                return Power;
+            default:
+                Debug.LogError("错误的ActionBallType！");
+                return 0;
+        }
     }
 
 }

@@ -24,6 +24,7 @@ public class HSConfigTableInitHelperPhone : DefaultInitHelper
     {
         AddTypeNode<ResourceDTO>("resource");
         AddTypeNode<SkillPojo>("skill");
+        AddTypeNode<ActionBallPojo>("actionball");
     }
 
     protected HSConfigTableInitHelperPhone() { }
@@ -34,6 +35,7 @@ public class HSConfigTableInitHelperPhone : DefaultInitHelper
     {
         typeof(ResourceDTO),
         typeof(SkillPojo),
+        typeof(ActionBallPojo),
     };
 
     private static List<Type> _ClientAllTypes;

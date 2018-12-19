@@ -83,7 +83,9 @@ public class BattleManager {
         foreach (var skill in CommandSuequence)
         {
             Debug.Log(skill.Name);
+            Player.BallPoolManager.CostBalls(skill.CostBalls);
             ExcuteCommandLogic commandLogic = new ExcuteCommandLogic(skill,Player,Enemy);
+
             yield return commandLogic.Rst;
             //SetRoleStatus(commandLogic.Rst);
         }
@@ -127,7 +129,7 @@ public class BattleManager {
             Power = 1,
             Solid = 1,
             Quick = 1,
-            BallPool = new List<ActionBall>(),
+            MaxBallSlotCount = 5,
             EquipedBaseSKills = new List<Skill>(),
             EquipedSpecialSkills = new List<Skill>(),
             EquipedXinfaSkill = new Skill(),
@@ -140,7 +142,7 @@ public class BattleManager {
         Player.EquipedSpecialSkills.Add(new Skill("寸拳"));
         Player.EquipedSpecialSkills.Add(new Skill("化骨绵掌"));
         Player.EquipedXinfaSkill = new Skill("化骨绵掌");
-        Player.GenerateBallPool();
+        Player.BallPoolManager.ResetBallPool();
         Enemy = new Role
         {
             RoleName = "半瓶神仙醋",
@@ -151,7 +153,7 @@ public class BattleManager {
             Power = 1,
             Solid = 1,
             Quick = 1,
-            BallPool = new List<ActionBall>(),
+            MaxBallSlotCount = 5,
             EquipedBaseSKills = new List<Skill>(),
             EquipedSpecialSkills = new List<Skill>(),
             EquipedXinfaSkill = new Skill(),
@@ -164,7 +166,7 @@ public class BattleManager {
         Enemy.EquipedSpecialSkills.Add(new Skill("寸拳"));
         Enemy.EquipedSpecialSkills.Add(new Skill("化骨绵掌"));
         Enemy.EquipedXinfaSkill = new Skill("化骨绵掌");
-        Enemy.GenerateBallPool();
+        Enemy.BallPoolManager.ResetBallPool();
 
     }
 

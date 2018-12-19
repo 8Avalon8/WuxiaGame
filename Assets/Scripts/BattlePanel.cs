@@ -73,16 +73,17 @@ public class BattlePanel : MonoBehaviour
         StartCoroutine(ShowBallsInBar(m_EnergyBarTrs, EnergyBallObj, m_Player.MP));
         StartCoroutine(ShowBallsInBar(m_EnemyEnergyBarTrs, EnergyBallObj, m_Enemy.MP));
         //StartCoroutine(ShowBallsInActionBar(m_EnemyBallBar, m_Player.BallPool, 9));
-        // 填充行动槽的球
-        StartCoroutine(ShowBallsInActionBar(m_BallBarItemUI, m_BallBar, m_Player.BallPool, 9));
-        StartCoroutine(ShowBallsInActionBar(m_EnemyBallBarItemUI, m_EnemyBallBar, m_Enemy.BallPool, 9));
         Refresh();
         BattleManager.Instance.StartRound();
     }
 
     void Refresh()
     {
-
+        // 填充行动槽的球
+        StartCoroutine(ShowBallsInActionBar(m_BallBarItemUI, m_BallBar, m_Player.BallPoolManager.Pool, m_Player.MaxBallSlotCount - m_Player.BallPoolManager.BallSlotList.Count));
+        StartCoroutine(ShowBallsInActionBar(m_EnemyBallBarItemUI, m_EnemyBallBar, m_Enemy.BallPoolManager.Pool, m_Enemy.MaxBallSlotCount - m_Player.BallPoolManager.BallSlotList.Count));
+        m_Player.BallPoolManager.Push();
+        m_Enemy.BallPoolManager.Push();
     }
 
 
@@ -196,12 +197,15 @@ public class BattlePanel : MonoBehaviour
             }
         }
         BattleManager.Instance.ClearCommand();
+        m_BallBarItemUI.Confirm();
+        Refresh();
+
     }
 
     void OnCancelAction()
     {
         BattleManager.Instance.ClearCommand();
-        m_BallBarItemUI.Clear();
+        m_BallBarItemUI.Undo();
     }
 
     IEnumerator ShowBallsInBar(Transform balltrs, GameObject ballprefab, int count)

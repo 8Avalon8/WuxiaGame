@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using HanSquirrel;
+using HanSquirrel.ResourceManager;
 
 public class BallBarItemUI : MonoBehaviour {
 
@@ -12,12 +14,28 @@ public class BallBarItemUI : MonoBehaviour {
     /// <summary>
     /// 清除行动槽中的所有球
     /// </summary>
-    public void Clear()
+    public void Undo()
     {
         foreach (var item in m_ActionBallItemList)
         {
             item.SetPreUse(false);
         }
+    }
+
+    public void Confirm()
+    {
+        Debug.Log("Before:" + m_ActionBallItemList.Count);
+        for (int i = m_ActionBallItemList.Count - 1; i >= 0; i--)
+        {
+            if (m_ActionBallItemList[i].IsPreUsed)
+            {
+                var item = m_ActionBallItemList[i];
+                m_ActionBallItemList.Remove(item);
+                GameObject.Destroy(item.gameObject);
+            }
+        }
+
+        Debug.Log("After:" + m_ActionBallItemList.Count);
     }
 
     public void Add(ActionBallItemUI item)

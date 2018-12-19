@@ -12,55 +12,35 @@ public class Role {
     public int MaxMp { get; set; }
     public int HP { get; set; }
     public int MP { get; set; }
+    public int MaxBallSlotCount { get; set; }
     public int Power { get; set; }
     public int Solid { get; set; }
     public int Quick { get; set; }
-
     public int Poison { get; set; }
 
+    // 球池和球槽的管理器
+    public ActionBallPoolManager BallPoolManager
+    {
+        get
+        {
+            if (_ballPoolManager == null)
+                _ballPoolManager = new ActionBallPoolManager(this);
+            return _ballPoolManager;
+        }
+    }
     public List<ActionBall> BallPool
     {
         get
         {
-            if (_ballPool == null)
-                GenerateBallPool();
-            return _ballPool;
-        }
-        set
-        {
-            _ballPool = value;
+            return _ballPoolManager.Pool;
         }
     }
     public List<Skill> EquipedBaseSKills { get; set; }
     public List<Skill> EquipedSpecialSkills { get; set; }
     public Skill EquipedXinfaSkill { get; set; }
 
-    private List<ActionBall> _ballPool;
+    private ActionBallPoolManager _ballPoolManager;
     private Dictionary<string, List<Trigger>> _triggersMap = new Dictionary<string, List<Trigger>>();
-    /// <summary>
-    /// 根据规则生成行动池
-    /// </summary>
-    /// <returns></returns>
-    public void GenerateBallPool()
-    {
-        // 设计：每一门装备的武学心法各自带不同数量的球，球池里就是把各个Trigger所带的球加起来
-        // 另外一种设计是固定数量根据概率分配
-        // Test 各放十个球
-        List<ActionBall> tempPool = new List<ActionBall>();
-        // Skill提供的球
-        foreach (var skill in EquipedBaseSKills)
-        {
-            foreach (var balls in skill.AddingBalls)
-            {
-                for (int i = 0; i < balls.Value; i++)
-                {
-                    ActionBall ball = new ActionBall(balls.Key);
-                    tempPool.Add(ball);
-                }
-            }
-        }
-        _ballPool = Tools.RandomSortList(tempPool);
-    }
 
     public int GetAttack(Skill skill)
     {
